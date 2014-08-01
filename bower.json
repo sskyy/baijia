@@ -1,0 +1,13 @@
+{
+  "name": "app",
+  "version": "0.0.0",
+  "dependencies": {
+    "modernizr": "~2.6.2",
+    "jquery": "~1.9.1",
+    "mobile-angular-ui": "~1.1.0-beta.29",
+    "angularjs": "~1.2.21",
+    "angular-route": "~1.2.21",
+    "angular-ui-router": "~0.2.10"
+  },
+  "devDependencies": {}
+}
