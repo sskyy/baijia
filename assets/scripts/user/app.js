@@ -8,7 +8,7 @@ var app = angular.module('app', [
 
 // 路由
 app.config(function($stateProvider, $urlRouterProvider) {
-  $urlRouterProvider.otherwise('/');
+  $urlRouterProvider.otherwise('/user');
 
   // 用户
   $stateProvider
@@ -27,25 +27,6 @@ app.config(function($stateProvider, $urlRouterProvider) {
     .state('user.buy', {
       url: '/buy',
       templateUrl: 'partials/user/buy.html'
-    });
-
-  // 商户
-  $stateProvider
-    .state('busi', {
-      url: '/busi',
-      templateUrl: 'partials/buis/buis.html'
-    })
-    .state('buis.dashboard', {
-      url: '/dashboard',
-      templateUrl: 'partials/busi/dashboard.html'
-    })
-    .state('buis.dashboard.order', {
-      url: '/order',
-      templateUrl: 'partials/busi/dashboard-order.html'
-    })
-    .state('buis.dashboard.store', {
-      url: '/store',
-      templateUrl: 'partials/busi/dashboard-store.html'
     });
 
 })
