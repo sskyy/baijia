@@ -27,17 +27,6 @@ app.controller('searchController', function($scope, $state) {
 
 app.controller('mapController', function($scope, $state, locationService) {
 
-  //首先输入轻应用的ak
-  clouda.lightInit({
-    ak:"M0FwSH3hiXGRu7GXNty5NVuq",
-    module:["geolocation"]
-  });
-
-  $scope.openMap = function() {
-
-    locationService.getLocation();
-
-  };
 
 });
 
