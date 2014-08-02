@@ -44,9 +44,9 @@ app.run(['$rootScope', '$state', '$stateParams',
     $rootScope.$stateParams = $stateParams;
 
     // 初始化轻应用
-    clouda.lightInit({
-      ak:"IGocXScqzBIwbEHWpqDyWh6c",
-      module:["geolocation"]
+    Blend.lightInit({
+      ak: "IGocXScqzBIwbEHWpqDyWh6c",//从百度开放云平台获取
+      module:["geolocation", "qr","media"]//根据勾选的模块生成
     });
   }
 ]);

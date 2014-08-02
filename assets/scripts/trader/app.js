@@ -52,5 +52,11 @@ app.run(['$rootScope', '$state', '$stateParams',
   function($rootScope, $state, $stateParams) {
     $rootScope.$state = $state;
     $rootScope.$stateParams = $stateParams;
+
+    Blend.lightInit({
+      ak: "IGocXScqzBIwbEHWpqDyWh6c",//从百度开放云平台获取
+      module:["geolocation", "qr", "media"]//根据勾选的模块生成
+    });
   }
+
 ]);

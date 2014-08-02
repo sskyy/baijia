@@ -35,10 +35,17 @@ app.controller('storeController', function($scope) {
   console.log('storeController');
 });
 
-app.controller('addStoreController', function($scope) {
+app.controller('addStoreController', function($scope, qrService) {
+
   $scope.add = function() {
-    alert(1);
-  };
+
+    // 调用条形码扫码功能
+    qrService.openQr().then(function(res){
+
+    });
+
+  }
+
 });
 
 app.controller('deliverController', function($scope) {

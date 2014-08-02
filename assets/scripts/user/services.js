@@ -102,7 +102,7 @@ app.factory('locationService', function($http, $q) {
     var geolocation = {};
     var deferred = $q.defer();
 
-    clouda.device.geolocation.get({
+    Blend.device.geolocation.get({
 
       onsuccess: function(data) {
         geolocation = {
@@ -133,5 +133,4 @@ app.factory('locationService', function($http, $q) {
   };
 
 });
-
 
