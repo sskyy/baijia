@@ -11,9 +11,19 @@ app.controller('traderController', function($scope, $state) {
   };
 });
 
-app.controller('dashboardController', function($scope, $state) {
+app.controller('dashboardController', function($scope, $state, orderService) {
 
   $scope.orders = ['a', 'b', 'c'];
+
+  orderService.list()
+    .then(
+      function(data) {
+        console.log(data);
+      },
+      function(error) {
+        console.log('error:' + error);
+      }
+    );
 
 });
 

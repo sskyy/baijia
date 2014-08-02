@@ -16,15 +16,22 @@
  */
 
 module.exports = {
-    
-  
+
+
 
 
   /**
    * Overrides for the settings in `config/controllers.js`
    * (specific to OrderController)
    */
-  _config: {}
+  _config: {},
+  list : function(req,res){
+    Order.find().then(function( data ){
+      res.json( data );
+    }).fail(function(err){
+      console.log("[find asset error]:", err);
+      res.send(500);
+    });
+  }
 
-  
 };
