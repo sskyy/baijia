@@ -27,7 +27,8 @@ _.each( traderNames,function( traderName,i ){
     _.each( assetsNames, function( assetName ){
         trader.assets.push({
             name : assetName,
-            store : parseInt( 50 * Math.random() )
+            store : parseInt( 50 * Math.random() ),
+            price : parseInt( 10 * Math.random() )
         })
     })
     data.push( trader )
