@@ -1,0 +1,13 @@
+.commbox input,.as-btn,.am-button {border: none 0; outline: none;}
+.am-flexbox { display: -webkit-flex;}
+.am-button {width: 100%; border-radius: 5px; font-size: 16px; -webkit-box-flex:1; box-flex:1; color: #fff; margin-left: 8px; height: 46px; text-align: center;}
+.am-button:first-child { margin-left: 0;}
+.am-button-green {background: #72c180;}
+.am-button-blue {background: #60a8db;}
+.commbox { background:#fff; border-radius: 3px; margin: 5px;}
+.innerbox { padding: 20px 10px; font-size: 16px;}
+.as-btn { background: #f0f0f0; color: #666; width: 50px; height:50px; text-align: center; font-size: 16px;}
+.formarea { margin-bottom: 30px; color: #999;}
+.am-input { border-bottom: 1px #ccc solid !important;}
+.btnwrap { margin: 5px;}
+.am-filed { margin-bottom: 10px;}
