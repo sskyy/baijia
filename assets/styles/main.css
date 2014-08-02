@@ -12,6 +12,18 @@
   color: white !important;
 }
 
+/* 底部样式 */
+.navbar-absolute-bottom {
+  background: #fe9e21 !important;
+}
+
+.navbar-absolute-bottom a{
+  color: white !important;
+}
+
+.navbar-absolute-bottom .active {
+  color: #d47e0f !important;
+}
 
 /* 列表样式 */
 .list-group-item:first-child, a.list-group-item:first-child {

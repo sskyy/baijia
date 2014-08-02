@@ -40,6 +40,11 @@ app.config(function($stateProvider, $urlRouterProvider) {
       templateUrl: 'partials/trader/order.html',
       controller: 'orderController'
     })
+    .state('map', {
+      url: '/map',
+      templateUrl: 'partials/trader/map.html',
+      controller: 'mapController'
+    })
     .state('store', {
       url: '/store',
       templateUrl: 'partials/trader/store.html',
