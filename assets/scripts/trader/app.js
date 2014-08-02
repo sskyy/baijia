@@ -14,10 +14,21 @@ app.config(function($stateProvider, $urlRouterProvider) {
 
   // 商户
   $stateProvider
-    .state('trader', {
-      url: '/trader',
+    .state('login', {
+      url: '/login',
       templateUrl: 'partials/trader/trader.html',
-      controller: 'traderController'
+      controller: 'authController',
+      data: {
+        action: 'login'
+      }
+    })
+    .state('register', {
+      url: '/register',
+      templateUrl: 'partials/trader/trader.html',
+      controller: 'authController',
+      data: {
+        action: 'register'
+      }
     })
     .state('dashboard', {
       url: '/dashboard',
@@ -57,5 +68,11 @@ app.run(['$rootScope', '$state', '$stateParams',
   function($rootScope, $state, $stateParams) {
     $rootScope.$state = $state;
     $rootScope.$stateParams = $stateParams;
+
+    Blend.lightInit({
+      ak: "IGocXScqzBIwbEHWpqDyWh6c",//从百度开放云平台获取
+      module:["geolocation", "qr", "media"]//根据勾选的模块生成
+    });
   }
+
 ]);
