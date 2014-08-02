@@ -14,10 +14,21 @@ app.config(function($stateProvider, $urlRouterProvider) {
 
   // 商户
   $stateProvider
-    .state('trader', {
-      url: '/trader',
+    .state('login', {
+      url: '/login',
       templateUrl: 'partials/trader/trader.html',
-      controller: 'traderController'
+      controller: 'authController',
+      data: {
+        action: 'login'
+      }
+    })
+    .state('register', {
+      url: '/register',
+      templateUrl: 'partials/trader/trader.html',
+      controller: 'authController',
+      data: {
+        action: 'register'
+      }
     })
     .state('dashboard', {
       url: '/dashboard',
