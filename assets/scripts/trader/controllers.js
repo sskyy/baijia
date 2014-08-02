@@ -35,12 +35,10 @@ app.controller('authController', function($scope, $state, $resource) {
 
 app.controller('dashboardController', function($scope, $state, orderService) {
 
-  $scope.orders = ['a', 'b', 'c'];
-
   orderService.list()
     .then(
       function(data) {
-        console.log(data);
+        $scope.orders = data;
       },
       function(error) {
         console.log('error:' + error);
@@ -64,6 +62,14 @@ app.controller('storeController', function($scope, storeService) {
         $scope.assets = data;
       }
     );
+
+  $scope.add = function() {
+
+  };
+
+  $scope.del = function() {
+
+  };
 });
 
 app.controller('addStoreController', function($scope, qrService) {

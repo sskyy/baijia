@@ -23,15 +23,14 @@
   <div class="app-content">
     <div class="scrollable" style="background: #eee">
       <div class="scrollable-content">
-        <div class="list-group asset-list">
-          <a ng-href class="list-group-item">
-          库存
-          </a>
+
+        <div class="asset-store">
+          库存： <span class="store-num">32</span> 件
         </div>
 
         <div class="asset-btn-group">
-          <span class="btn asset-btn pull-left">添加商品</span>
-          <span class="btn asset-btn pull-right">删除商品</span>
+          <span ng-click="add()" class="btn asset-btn asset-btn-green pull-left">添加商品</span>
+          <span ng-click="del()" class="btn asset-btn asset-btn-red pull-right">删除商品</span>
         </div>
 
         <div style="clear: both"></div>
@@ -39,8 +38,8 @@
         <div class="list-group asset-list">
           <a ng-repeat="asset in assets" href="#" class="list-group-item">
             <span class="asset-logo"></span>
-            {{ asset }}
-            <!-- <span class="pull-right">3.4 公里</span> -->
+            商品名：{{ asset.name }}<br>
+            价钱： 33
           </a>
         </div>
       </div>
