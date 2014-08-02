@@ -4,6 +4,45 @@
   display: inline-block;
 }
 
+.custom-search {
+  padding: 10px;
+  margin: 5px auto;
+  width: 65%;
+  margin-left: 10%;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid #0f488f;
+  color: #98c3f9;
+}
+
+.custom-search:focus {
+  outline: none !important;
+}
+
+.not-found {
+  color: #ff6c4f;
+  position: absolute;
+  width: 200px;
+  right: 45px;
+  line-height: 50px;
+}
+
+.add-req {
+  line-height: 36px;
+}
+
+.add-req:hover {
+  cursor: pointer;
+}
+
+.user-searh {
+  height: 65px;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  background: #225fab;
+}
+
 .asset-btn-group {
   margin: 0 10px;
 }
@@ -56,6 +95,10 @@
 /* 重写样式 */
 
 /* 顶部样式 */
+.navbar-brand {
+  font-size: 24px !important;
+}
+
 .navbar-absolute-top {
   border-bottom: 1px solid #1a4b88 !important;
   background: #235798 !important;

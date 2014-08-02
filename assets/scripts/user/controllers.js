@@ -33,7 +33,15 @@ app.controller('authController', function($scope, $state, $resource) {
 });
 
 app.controller('searchController', function($scope, $rootScope, $state, $http, locationService, assetService) {
+  $scope.searchBtnText = '搜索';
 
+  $scope.search = function() {
+
+    if (true) {
+      $scope.notFound = true;
+      $scope.searchBtnText = '添加需求';
+    }
+  };
 });
 
 app.controller('discoveryController', function($scope, $rootScope, $state, $http, locationService, assetService) {
