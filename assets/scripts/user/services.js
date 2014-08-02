@@ -53,6 +53,7 @@ app.factory('mapService', function($http, $q) {
         id: 1,
         point: point
       });
+      console.log(point)
     }
     return dataList;
   }
@@ -74,7 +75,6 @@ app.factory('mapService', function($http, $q) {
               '</div>'+
           '</div>'
         ].join('');
-        console.log(html)
         var infoWindow = new BMap.InfoWindow(html);
         marker.addEventListener("click", function(){this.openInfoWindow(infoWindow);});
       })(dataList[i]);
@@ -133,3 +133,5 @@ app.factory('locationService', function($http, $q) {
   };
 
 });
+
+
