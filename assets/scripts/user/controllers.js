@@ -38,9 +38,11 @@ app.controller('searchController', function($scope, $state,$http) {
 
 });
 
-app.controller('mapController', function($scope, $state, locationService) {
-
-
+app.controller('mapController', function($scope, mapService, locationService) {
+  locationService.getLocation().then(function(res){
+    mapService.initMap(new BMap.Point(res.lng, res.lat));
+    console.log('map start');
+  });
 });
 
 app.controller('buyController', function($scope) {
