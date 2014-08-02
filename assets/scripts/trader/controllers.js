@@ -31,6 +31,10 @@ app.controller('orderController', function($scope) {
   console.log('orderController');
 });
 
+app.controller('mapController', function($scope) {
+
+});
+
 app.controller('storeController', function($scope) {
   console.log('storeController');
 });

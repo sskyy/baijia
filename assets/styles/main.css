@@ -12,6 +12,14 @@
   color: white !important;
 }
 
+/* 底部样式 */
+.navbar-absolute-bottom a{
+  color: white !important;
+}
+
+.navbar-absolute-bottom .active {
+  color: rgb(255, 224, 0) !important;
+}
 
 /* 列表样式 */
 .list-group-item:first-child, a.list-group-item:first-child {
