@@ -46,6 +46,11 @@ app.config(function($stateProvider, $urlRouterProvider) {
       templateUrl: 'partials/user/requirements.html',
       controller: 'requirementsController'
     })
+    .state('addReq', {
+      url: '/addReq',
+      templateUrl: 'partials/user/addReq.html',
+      controller: 'addReqController'
+    })
     .state('map', {
       url: '/map',
       templateUrl: 'partials/user/map.html',

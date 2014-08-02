@@ -98,6 +98,10 @@ app.controller('requirementsController', function($scope) {
 
 });
 
+app.controller('addReqController', function($scope) {
+  console.log('addReqController');
+});
+
 app.controller('mapController', function($scope,mapService, locationService) {
   locationService.getLocation().then(function(res){
     mapService.initMap(new BMap.Point(res.lng, res.lat));
