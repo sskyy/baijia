@@ -1,3 +1,24 @@
+
+.user-logo {
+  display: inline-block;
+}
+
+.list-group-item:first-child, a.list-group-item:first-child {
+  border-top-right-radius: 3px !important;
+  border-top-left-radius: 3px !important;
+}
+
+.list-group-item:last-child, a.list-group-item:last-child {
+  border-bottom-right-radius: 3px !important;
+  border-bottom-left-radius: 3px !important;
+}
+
+.list-group .list-group-item{
+  margin: 5px;
+  padding: 15px 15px;
+  border-radius: 3px 3px 3px 3px;
+}
+
 /* Have to set height explicity on ui-view
 to prevent collapsing during animation*/
 .well[ui-view]{
