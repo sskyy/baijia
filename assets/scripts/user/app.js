@@ -45,8 +45,8 @@ app.run(['$rootScope', '$state', '$stateParams',
 
     // 初始化轻应用
     clouda.lightInit({
-      ak:"iUQs1O9pmkIvfZ1zmy8sm7Gk",
-      module:["media"]
+      ak:"IGocXScqzBIwbEHWpqDyWh6c",
+      module:["geolocation"]
     });
   }
 ]);
