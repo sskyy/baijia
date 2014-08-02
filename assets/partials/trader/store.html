@@ -38,8 +38,10 @@
         <div class="list-group asset-list">
           <a ng-repeat="asset in assets" href="#" class="list-group-item">
             <span class="asset-logo"></span>
-            商品名：{{ asset.name }}<br>
-            价钱： 33
+            <div style="margin-top: 22px;margin-left: 110px;">
+              <span>商品名：{{ asset.name }}</span><br>
+              <span>价钱： {{asset.price}}</span>
+            </div>
           </a>
         </div>
       </div>
