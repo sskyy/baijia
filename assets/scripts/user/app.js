@@ -10,7 +10,7 @@ var app = angular.module('app', [
 
 // 路由
 app.config(function($stateProvider, $urlRouterProvider) {
-  $urlRouterProvider.otherwise('/user');
+  $urlRouterProvider.otherwise('/login');
 
   // 用户
   $stateProvider
