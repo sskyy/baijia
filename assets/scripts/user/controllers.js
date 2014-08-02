@@ -38,8 +38,9 @@ app.controller('searchController', function($scope, $state,$http) {
 
 });
 
-app.controller('mapController', function($scope) {
-  console.log('map');
+app.controller('mapController', function($scope, $state, locationService) {
+
+
 });
 
 app.controller('buyController', function($scope) {

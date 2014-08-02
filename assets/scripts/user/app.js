@@ -42,5 +42,12 @@ app.run(['$rootScope', '$state', '$stateParams',
   function($rootScope, $state, $stateParams) {
     $rootScope.$state = $state;
     $rootScope.$stateParams = $stateParams;
+
+    // 初始化轻应用
+    clouda.lightInit({
+      ak:"IGocXScqzBIwbEHWpqDyWh6c",
+      module:["geolocation"]
+    });
   }
 ]);
+
