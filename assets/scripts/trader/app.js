@@ -4,6 +4,7 @@
 // 模块依赖
 var app = angular.module('app', [
   'ui.router',
+  'ngAnimate',
   'mobile-angular-ui'
 ]);
 
@@ -32,6 +33,11 @@ app.config(function($stateProvider, $urlRouterProvider) {
       url: '/store',
       templateUrl: 'partials/trader/store.html',
       controller: 'storeController'
+    })
+    .state('addStore', {
+      url: '/addStore',
+      templateUrl: 'partials/trader/addStore.html',
+      controller: 'addStoreController'
     })
     .state('deliver', {
       url: '/deliver',
