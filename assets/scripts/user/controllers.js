@@ -69,7 +69,7 @@ app.controller('searchController', function($scope, $state, $http, locationServi
           i.distance = distance;
         });
 
-        // console.log("asset 添加了位置 =>", data);
+        console.log("asset 添加了位置 =>", data);
         return data;
 
       });
