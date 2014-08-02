@@ -34,6 +34,11 @@ app.config(function($stateProvider, $urlRouterProvider) {
       templateUrl: 'partials/trader/store.html',
       controller: 'storeController'
     })
+    .state('addStore', {
+      url: '/addStore',
+      templateUrl: 'partials/trader/addStore.html',
+      controller: 'addStoreController'
+    })
     .state('deliver', {
       url: '/deliver',
       templateUrl: 'partials/trader/deliver.html',

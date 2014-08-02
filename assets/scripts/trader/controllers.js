@@ -35,6 +35,12 @@ app.controller('storeController', function($scope) {
   console.log('storeController');
 });
 
+app.controller('addStoreController', function($scope) {
+  $scope.add = function() {
+    alert(1);
+  };
+});
+
 app.controller('deliverController', function($scope) {
   console.log('deliverController');
 });
