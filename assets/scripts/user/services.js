@@ -35,9 +35,10 @@ app.factory('mapService', function($http, $q) {
 
   function getCustomPoints(map){
     /*
-     * {  }
+     * 数据格式说明：
+     * [{ name: 'xxx', 'id': '', point: obj }]
      */
-    var points = [];
+    var dataList = [];
     var bounds = map.getBounds();
     var sw = bounds.getSouthWest();
     var ne = bounds.getNorthEast();
@@ -46,21 +47,37 @@ app.factory('mapService', function($http, $q) {
 
     for (var i = 0; i < 15; i ++) {
       var point = new BMap.Point(sw.lng + lngSpan * (Math.random() * 0.7), ne.lat - latSpan * (Math.random() * 0.7));
-      points.push(point);
+      dataList.push({
+        name: '拉拉拉拉啦',
+        desc: '拉拉拉拉拉拉拉拉我是desc。。。。。你来咬我呀～',
+        id: 1,
+        point: point
+      });
     }
-    return points;
+    return dataList;
   }
 
   function createPointsOnMap(map){
-    var points = getCustomPoints(map); // 获取随机坐标，用来创建点数据
-    for(var i=0;i<points.length;i++){
-      var marker = new BMap.Marker(points[i]);  // 创建标注
-      map.addOverlay(marker);// 将标注添加到地图中
+    var dataList = getCustomPoints(map);
+    for(var i=0;i<dataList.length;i++){
+      var marker = new BMap.Marker(dataList[i].point); //创建标注
+      map.addOverlay(marker);// 将标注添加到地图
+
       //创建信息窗口
-      (function(i){
-        var infoWindow = new BMap.InfoWindow('<div>拉拉拉拉'+i+'</div>');
+      (function(item){
+        var html = [
+          '<div id="J_markerTip"">'+
+              '<div class="tipbox">'+
+                  '<h4>'+item.name+'</h4>'+
+                  '<p>'+item.desc+'</p>'+
+                  '<p><a href="###">查看详情</a></p>'+
+              '</div>'+
+          '</div>'
+        ].join('');
+        console.log(html)
+        var infoWindow = new BMap.InfoWindow(html);
         marker.addEventListener("click", function(){this.openInfoWindow(infoWindow);});
-      })(i);
+      })(dataList[i]);
     }
   }
 
