@@ -87,18 +87,20 @@ to prevent collapsing during animation*/
 }
 
 .login-su-1x {
-    background: url("/images/su.png");
+    background: -webkit-image-set(url("/images/su.png") 1x,
+                  url("/images/su@2x.png") 2x) 50% 0% no-repeat;
     width: 191px;
     height: 190px;
-    margin: 110px auto 40px;
+    margin: 20% auto 10%;
 }
 
 .login-logo-1x {
-    background: url("/images/logo.png");
+    background: -webkit-image-set(url("/images/logo.png") 1x,
+                  url("/images/logo@2x.png") 2x) 50% 0% no-repeat;
     width: 77px;
     height: 59px;
     margin: auto;
-    margin-bottom: 50px;
+    margin-bottom: 16%;
 }
 
 .btn.btn-default {
@@ -106,7 +108,7 @@ to prevent collapsing during animation*/
     border: 0px;
     color: #a4a4a4;
     font-size: 20px;
-    line-height: 40px;
+    line-height: 200%;
 }
 
 .index-router {
@@ -118,7 +120,7 @@ to prevent collapsing during animation*/
 .login-logo {
     width: 153px;
     height: 117px;
-    margin: 130px auto;
+    margin: 17% auto;
     background: url("/images/logo@2x.png");
 }
 
@@ -126,7 +128,7 @@ to prevent collapsing during animation*/
     background-color: #28e373;
     border: 0px;
     color: #fff;
-    font-size: 20px;
+    font-size: 1.5em;
 }
 
 input.form-control, a.form-control {
@@ -149,11 +151,18 @@ input.form-control, a.form-control {
 
 .login-slideway {
     text-align: center;
-    color: #fff;
-    position: fixed;
+    position: absolute;
     bottom: 20px;
     right: 0%;
     left: 0%;
+}
+
+.login-slideway a {
+    color: #fff;
+}
+
+.login-slideway a:hover {
+    color: #fff;
 }
 
 .login-slideway-sign {
