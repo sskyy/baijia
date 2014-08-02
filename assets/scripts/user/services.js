@@ -110,8 +110,6 @@ app.factory('locationService', function($http, $q) {
           "lat": data.latitude
         };
         deferred.resolve(geolocation);
-        console.log("ok =>", geolocation);
-        return geolocation;
       },
 
       onfail: function(err) {
@@ -120,8 +118,6 @@ app.factory('locationService', function($http, $q) {
           "lat": 31.201
         };
         deferred.resolve(geolocation);
-        console.log("error =>", geolocation);
-        return geolocation;
       }
     });
 
