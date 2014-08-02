@@ -55,6 +55,12 @@ app.factory('mapService', function($http, $q, $rootScope) {
      * [{ name: 'xxx', 'id': '', point: obj }]
      */
     var dataList = $rootScope.searchResults;
+
+    /* 如果没有搜索直接进来，全部显示 */
+    if(!dataList) {
+      return;
+    }
+
     var bounds = map.getBounds();
     var sw = bounds.getSouthWest();
     var ne = bounds.getNorthEast();
@@ -69,6 +75,12 @@ app.factory('mapService', function($http, $q, $rootScope) {
 
   function createPointsOnMap(map){
     var dataList = getCustomPoints(map);
+
+    /* 如果没有搜索直接进来，全部显示 */
+    if(!dataList) {
+      return;
+    }
+
     for(var i=0;i<dataList.length;i++){
       var marker = new BMap.Marker(dataList[i].point); //创建标注
       map.addOverlay(marker);// 将标注添加到地图
