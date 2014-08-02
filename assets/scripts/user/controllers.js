@@ -80,8 +80,11 @@ app.controller('searchController', function($scope, $rootScope, $state, $http, l
 
 });
 
-app.controller('mapController', function($scope) {
-  console.log('map');
+app.controller('mapController', function($scope,mapService, locationService) {
+  locationService.getLocation().then(function(res){
+    mapService.initMap(new BMap.Point(res.lng, res.lat));
+    console.log('map start');
+  });
 });
 
 app.controller('buyController', function($scope) {
