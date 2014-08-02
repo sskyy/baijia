@@ -3,11 +3,7 @@
   <div class="navbar-brand navbar-brand-center">
     <span class="ng-scope">开始搜索</span>
   </div>
-  <div class="btn-group pull-right">
-    <a ui-sref="map" class="btn btn-navbar">
-      切换到地图
-    </a>
-  </div>
+
 </div>
 
 <div class="navbar navbar-app navbar-absolute-bottom">
@@ -28,19 +24,27 @@
       ng-model="keyword"
       ng-change="search()">
 
-    <div class="scrollable" style="padding-top: 50px">
+    <div class="scrollable" style="padding-top: 40px">
       <div class="scrollable-content">
         <!-- 搜索列表 -->
-        <div class="list-group" ng-show="keyword">
+        <div class="list-group asset-list">
           <a ng-repeat="asset in assets" href="#" class="list-group-item">
-            {{ asset }} <i class="fa fa-chevron-right pull-right"></i>
+            <span class="asset-logo"></span>
+            <div style="margin-top: 22px;margin-left: 110px;">
+              <span>商品名：{{ asset.name }}</span><br>
+              <span>价钱： {{asset.price}}</span>
+            </div>
           </a>
         </div>
 
         <!-- 推荐列表 -->
-        <div class="list-group" ng-hide="keyword">
+        <div class="list-group asset-list" ng-hide="keyword">
           <a ng-repeat="s in suggests" href="#" class="list-group-item">
-            {{ s }} <i class="fa fa-chevron-right pull-right"></i>
+            <span class="asset-logo"></span>
+            <div style="margin-top: 22px;margin-left: 110px;">
+              <span>商品名：{{ s.name }}</span><br>
+              <span>价钱： {{s.price}}</span>
+            </div>
           </a>
         </div>
       </div>
