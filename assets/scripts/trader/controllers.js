@@ -5,7 +5,10 @@ var app = angular.module('app');
 
   // 登陆逻辑
 app.controller('traderController', function($scope, $state) {
-  console.log('traderController');
+
+  $scope.login = function() {
+    $state.go('dashboard');
+  };
 });
 
 app.controller('dashboardController', function($scope, $state) {
