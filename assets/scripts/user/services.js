@@ -9,8 +9,10 @@ app.factory('assetService', function($http, $q) {
 
       $http({
         url: '/asset/search',
-        method: 'GET',
-        params: keyword
+        method: 'POST',
+        data: {
+          'keyword': keyword
+        }
       })
       .success(deferred.resolve)
       .error(deferred.reject);

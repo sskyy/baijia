@@ -32,52 +32,44 @@ app.controller('authController', function($scope, $state, $resource) {
   };
 });
 
-app.controller('searchController', function($scope, $state, $http, locationService) {
+app.controller('searchController', function($scope, $rootScope, $state, $http, locationService, assetService) {
   $scope.switchToMap = function() {
     if (true) {
       $state.go('map');
     }
   };
 
-  $scope.search = function(){
-
-    $http({
-      url: '/asset/search',
-      method: 'post',
-      data: {
-        "keyword": $scope.keyword
-      }
-    })
-    .success(function(data){
-      $scope.searchResults = injectDistance(data);
-    })
-    .error(function(){
-      //fake data
-      $scope.searchResults = []
-    });
-
-    function injectDistance(data) {
-
-      locationService.getLocation().then(function(res){
-        var uLat = res.lat;
-        var uLng = res.lng;
-
-        data.forEach(function(i){
-          var sLat = i.owner.points.lat;
-          var sLng = i.owner.points.lng;
-          var distance = locationService.getDistance(uLat, uLng, sLat, sLng);
-          i.distance = distance;
-        });
-
-        console.log("asset 添加了位置 =>", data);
-        return data;
-
-      });
-
-    }
-
+  $scope.search = function() {
+    assetService.search($scope.keyword)
+      .then(
+        function(data) {
+          $scope.injectDistance(data);
+        },
+        function() {
+          $scope.assets = [];
+        }
+      );
   };
 
+  $scope.injectDistance = function(data) {
+    locationService.getLocation().then(function(res){
+      var uLat = res.lat;
+      var uLng = res.lng;
+
+      data.forEach(function(i){
+        var sLat = i.owner.points.lat;
+        var sLng = i.owner.points.lng;
+        var distance = locationService.getDistance(uLat, uLng, sLat, sLng);
+        i.distance = distance;
+      });
+
+      console.log("asset 添加了位置 =>", data);
+
+      $scope.assets = data;
+      $rootScope.searchResults = data;
+
+    });
+  };
 
 });
 
