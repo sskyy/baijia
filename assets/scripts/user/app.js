@@ -4,7 +4,8 @@
 // 模块依赖
 var app = angular.module('app', [
   'ui.router',
-  'mobile-angular-ui'
+  'mobile-angular-ui',
+    'ngResource'
 ]);
 
 // 路由

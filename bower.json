@@ -7,7 +7,9 @@
     "mobile-angular-ui": "~1.1.0-beta.29",
     "angularjs": "~1.2.21",
     "angular-route": "~1.2.21",
-    "angular-ui-router": "~0.2.10"
-  },
+    "angular-ui-router": "~0.2.10",
+     "angular-resource":  "~1.2.21"
+
+},
   "devDependencies": {}
 }
