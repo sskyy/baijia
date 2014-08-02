@@ -18,7 +18,7 @@ app.controller('authController', function($scope, $state, $resource) {
     var credentials = {
       userId: this.userId,
       password: this.password,
-      username: this.username
+      username: this.userId
     };
 
     var auth = Authorization.save(credentials, function() {
@@ -54,11 +54,8 @@ app.controller('searchController', function($scope, $state,$http) {
 
 });
 
-app.controller('mapController', function($scope, mapService, locationService) {
-  locationService.getLocation().then(function(res){
-    mapService.initMap(new BMap.Point(res.lng, res.lat));
-    console.log('map start');
-  });
+app.controller('mapController', function($scope) {
+  console.log('map');
 });
 
 app.controller('buyController', function($scope) {
