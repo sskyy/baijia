@@ -1,16 +1,16 @@
-
+'use strict';
 
 var app = angular.module('app');
 
-app.factory('dataService', function($http, $q) {
+app.factory('assetService', function($http, $q) {
 
-    var getxxdata = function(type) {
+    var search = function(keyword) {
       var deferred = $q.defer();
 
       $http({
-        url: '/aaaa',
+        url: '/asset/search',
         method: 'GET',
-        params: type
+        params: keyword
       })
       .success(deferred.resolve)
       .error(deferred.reject);
@@ -20,7 +20,7 @@ app.factory('dataService', function($http, $q) {
 
 
     return {
-      getxxdata: getxxdata
+      search: search
     };
   });
 
