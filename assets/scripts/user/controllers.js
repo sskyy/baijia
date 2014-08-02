@@ -34,6 +34,10 @@ app.controller('authController', function($scope, $state, $resource) {
 
 app.controller('searchController', function($scope, $rootScope, $state, $http, locationService, assetService) {
 
+});
+
+app.controller('discoveryController', function($scope, $rootScope, $state, $http, locationService, assetService) {
+  $scope.searchMode = false;
   assetService.list().then(
     function(data) {
       $scope.suggests = data;
@@ -77,11 +81,6 @@ app.controller('searchController', function($scope, $rootScope, $state, $http, l
 
     });
   };
-
-});
-
-app.controller('discoveryController', function($scope) {
-
 });
 
 app.controller('requirementsController', function($scope) {

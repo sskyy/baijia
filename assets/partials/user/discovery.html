@@ -10,7 +10,7 @@
   </div>
 
   <div class="btn-group pull-right">
-    <a class="btn btn-navbar" style="color: white !important;margin-right: 5px;">
+    <a ng-click="searchMode = !searchMode" class="btn btn-navbar" style="color: white !important;margin-right: 5px;">
       <i class="fi-magnifying-glass size-24"></i>
     </a>
   </div>
@@ -18,8 +18,8 @@
 
 <div class="navbar navbar-app navbar-absolute-bottom">
   <div class="btn-group justified">
-    <a ui-sref="search" class="btn btn-navbar active">搜索</a>
-    <a ui-sref="discovery" class="btn btn-navbar">发现</a>
+    <a ui-sref="search" class="btn btn-navbar ">搜索</a>
+    <a ui-sref="discovery" class="btn btn-navbar active">发现</a>
     <a ui-sref="store" class="btn btn-navbar">想要</a>
     <a ui-sref="settings" class="btn btn-navbar">设置</a>
   </div>
@@ -35,7 +35,8 @@
       class="form-control app-search"
       placeholder="Search.."
       ng-model="keyword"
-      ng-change="search()">
+      ng-change="search()"
+      ng-if="searchMode">
 
     <div class="scrollable">
       <div class="scrollable-content">
