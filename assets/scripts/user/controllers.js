@@ -39,16 +39,22 @@ app.controller('searchController', function($scope, $rootScope, $state, $http, l
     }
   };
 
+  var timeout;
   $scope.search = function() {
-    assetService.search($scope.keyword)
-      .then(
-        function(data) {
-          $scope.injectDistance(data);
-        },
-        function() {
-          $scope.assets = [];
-        }
-      );
+    if (true) {
+      clearTimeout(timeout);
+    }
+    timeout = setTimeout(function() {
+      assetService.search($scope.keyword)
+        .then(
+          function(data) {
+            $scope.injectDistance(data);
+          },
+          function() {
+            $scope.assets = [];
+          }
+        );
+    }, 10);
   };
 
   $scope.injectDistance = function(data) {
