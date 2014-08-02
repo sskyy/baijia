@@ -9,7 +9,9 @@ app.controller('traderController', function($scope, $state) {
 });
 
 app.controller('dashboardController', function($scope, $state) {
-  console.log('dashboardController');
+
+  $scope.orders = ['a', 'b', 'c'];
+
 });
 
 app.controller('orderController', function($scope) {
