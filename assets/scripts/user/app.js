@@ -18,15 +18,15 @@ app.config(function($stateProvider, $urlRouterProvider) {
       templateUrl: 'partials/user/user.html',
       controller: 'loginController'
     })
-    .state('user.search', {
+    .state('search', {
       url: '/search',
       templateUrl: 'partials/user/search.html'
     })
-    .state('user.map', {
+    .state('map', {
       url: '/map',
       templateUrl: 'partials/user/map.html'
     })
-    .state('user.buy', {
+    .state('buy', {
       url: '/buy',
       templateUrl: 'partials/user/buy.html'
     });
