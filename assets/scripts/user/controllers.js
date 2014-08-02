@@ -32,6 +32,32 @@ app.controller('authController', function($scope, $state, $resource) {
   };
 });
 
+app.controller('manageController', function ($scope, $state, md5) {
+  var options = {
+    'bucket': 'baidu-baijia',
+    'expiration': new Date().getTime() + 60,
+    'save-key': '/' + getRandomName() + '.jpg'
+  };
+
+  var policy = window.btoa(JSON.stringify(options));
+  var signature = md5.createHash(policy + '&' + 'LXryECyP3BodcZLRQ555IfalbZg=');
+
+  $scope.policy = policy;
+  $scope.signature = signature;
+
+  function getRandomName() {
+    var chars = 'ABCDEFGHJKMNPQRSTWXYZabcdefhijkmnprstwxyz2345678';
+    var maxPos = chars.length;
+    var name = '';
+
+    for (var i = 0; i < 32; i++) {
+      name += chars.charAt(Math.floor(Math.random() * maxPos));
+    }
+
+    return name;
+  }
+});
+
 app.controller('searchController', function($scope, $rootScope, $state, $http, locationService, assetService) {
 
 });

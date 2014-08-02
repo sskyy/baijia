@@ -9,7 +9,9 @@
     "angular-route": "~1.2.21",
     "angular-ui-router": "~0.2.10",
     "angular-resource": "~1.2.21",
-    "angular-animate": "~1.2.21"
+    "angular-animate": "~1.2.21",
+    "angular-md5": "~0.1.7",
+    "ng-file-upload": "~1.6.5"
   },
   "devDependencies": {}
 }

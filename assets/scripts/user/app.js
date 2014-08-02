@@ -6,7 +6,8 @@ var app = angular.module('app', [
   'ui.router',
   'mobile-angular-ui',
   'ngAnimate',
-  'ngResource'
+  'ngResource',
+  'angular-md5'
 ]);
 
 // 路由
@@ -30,6 +31,11 @@ app.config(function($stateProvider, $urlRouterProvider) {
       data: {
         action: 'register'
       }
+    })
+    .state('manage', {
+      url: '/manage',
+      templateUrl: 'partials/user/manage.html',
+      controller: 'manageController'
     })
     .state('search', {
       url: '/search',
@@ -77,4 +83,3 @@ app.run(['$rootScope', '$state', '$stateParams',
     });
   }
 ]);
-
