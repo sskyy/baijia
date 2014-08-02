@@ -85,7 +85,18 @@ app.controller('discoveryController', function($scope) {
 });
 
 app.controller('requirementsController', function($scope) {
-  console.log('requirementsController');
+
+    $scope.requires = [{
+        name : '冰红茶',
+        providers : [{
+            name : "新新超市",
+            price : 25
+        }]
+    },{
+        name : '冰绿茶',
+        providers : []
+    }]
+
 });
 
 app.controller('mapController', function($scope,mapService, locationService) {

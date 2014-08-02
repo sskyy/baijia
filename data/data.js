@@ -17,6 +17,7 @@ _.each( traderNames,function( traderName,i ){
         name : traderName,
         userId : phone + i,
         password : '123123',
+        type : 'trader',
         assets : [],
         points : {
             lng : lng + 0.1*Math.random(),
