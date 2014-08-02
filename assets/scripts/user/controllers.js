@@ -55,7 +55,7 @@ app.controller('searchController', function($scope, $rootScope, $state, $http, l
             $scope.assets = [];
           }
         );
-    }, 10);
+    }, 50);
   };
 
   $scope.injectDistance = function(data) {

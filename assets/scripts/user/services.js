@@ -62,7 +62,7 @@ app.factory('mapService', function($http, $q, $rootScope) {
     var latSpan = Math.abs(ne.lat - sw.lat);
 
     for (var i = 0; i < dataList.length; i ++) {
-      dataList.point = new BMap.Point( dataList[i].point.lng, dataList[i].point.lat);
+      dataList.point = new BMap.Point( dataList[i].owner.point.lng, dataList[i].owner.point.lat);
     }
     return dataList;
   }
