@@ -17,7 +17,7 @@
 </head>
     <body>
 
-    <div ui-view></div>
+    <div ui-view class="app"></div>
 
     <!-- 轻应用api -->
     <script name="baidu-tc-cerfication" charset="utf-8" src="http://apps.bdimg.com/cloudaapi/lightapp.js"></script>
@@ -25,10 +25,12 @@
     <!-- build:js scripts/main.js -->
     <script src="bower_components/jquery/jquery.js"></script>
     <script src="bower_components/angularjs/angular.js"></script>
+    <script src="bower_components/angular-resource/angular-resource.min.js"></script>
     <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
     <script src="bower_components/mobile-angular-ui/dist/js/mobile-angular-ui.min.js"></script>
     <script src="scripts/user/app.js"></script>
     <script src="scripts/user/controllers.js"></script>
+    <script src="scripts/user/services.js"></script>
     <!-- endbuild -->
 </body>
 </html>

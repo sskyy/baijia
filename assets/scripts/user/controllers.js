@@ -16,13 +16,26 @@ app.controller('loginController', function($scope, $state) {
   };
 });
 
-app.controller('searchController', function($scope, $state) {
-  $scope.search = function() {
-
+app.controller('searchController', function($scope, $state,$http) {
+  $scope.switchToMap = function() {
     if (true) {
       $state.go('map');
     }
   };
+
+  $scope.keyword = ''
+  $scope.search = function(){
+
+      $http('/asset/search',{keyword:$scope.keyword})
+      .success(function( data ){
+        $scope.searchResults = data
+      })
+      .error(function(){
+        //fake data
+        $scope.searchResults = []
+      })
+  }
+
 });
 
 app.controller('mapController', function($scope) {

@@ -24,7 +24,15 @@ module.exports = {
    * Overrides for the settings in `config/controllers.js`
    * (specific to AssetController)
    */
-  _config: {}
+  _config: {},
 
-  
+  search : function(req,res){
+      var keyword = req.param('keyword')
+      Asset.find({name:{contains:keyword}}).then(function( data ){
+        res.json( data )
+      }).fail(function(err){
+          console.log("[find asset error]:", err)
+          res.send(500)
+      })
+  }
 };
