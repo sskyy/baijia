@@ -5,6 +5,7 @@
 var app = angular.module('app', [
   'ui.router',
   'mobile-angular-ui',
+  'ngAnimate',
   'ngResource'
 ]);
 

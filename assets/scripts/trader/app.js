@@ -5,7 +5,8 @@
 var app = angular.module('app', [
   'ui.router',
   'ngAnimate',
-  'mobile-angular-ui'
+  'mobile-angular-ui',
+  'ngResource'
 ]);
 
 // 路由
