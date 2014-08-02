@@ -15,19 +15,28 @@ app.config(function($stateProvider, $urlRouterProvider) {
   $stateProvider
     .state('trader', {
       url: '/trader',
-      templateUrl: 'partials/trader/trader.html'
+      templateUrl: 'partials/trader/trader.html',
+      controller: 'traderController'
     })
-    .state('buis.dashboard', {
+    .state('dashboard', {
       url: '/dashboard',
-      templateUrl: 'partials/busi/dashboard.html'
+      templateUrl: 'partials/trader/dashboard.html',
+      controller: 'dashboardController'
     })
-    .state('buis.dashboard.order', {
+    .state('order', {
       url: '/order',
-      templateUrl: 'partials/busi/dashboard-order.html'
+      templateUrl: 'partials/trader/order.html',
+      controller: 'orderController'
     })
-    .state('buis.dashboard.store', {
+    .state('store', {
       url: '/store',
-      templateUrl: 'partials/busi/dashboard-store.html'
+      templateUrl: 'partials/trader/store.html',
+      controller: 'storeController'
+    })
+    .state('deliver', {
+      url: '/deliver',
+      templateUrl: 'partials/trader/deliver.html',
+      controller: 'deliverController'
     });
 
 });
