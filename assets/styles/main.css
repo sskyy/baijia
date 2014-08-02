@@ -57,7 +57,7 @@
 
 /* 顶部样式 */
 .navbar-absolute-top {
-  border-bottom-width: 0 !important;
+  border-bottom: 1px solid #1a4b88 !important;
   background: #235798 !important;
   color: white !important;
 }
