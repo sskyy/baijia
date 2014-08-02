@@ -85,7 +85,7 @@ module.exports = {
       or: [{
         userId: userParam.userId
       }, {
-        usename: userParam.username
+        username: userParam.username
       }]
     }).then(function(users) {
       if (users.length == 0) {
@@ -99,5 +99,68 @@ module.exports = {
         }];
       }
     }).fail(_.partialRight(ErrorRespondService.handle, res));
-  }
+  },
+
+    upload : function( req, res){
+        var dir = __dirname + "/../../assets/upload/",
+            defers  =[],
+            result = []
+
+        req.file('file').upload( StreamReceiverService({dirname:dir}),function (err, files) {//可配置
+
+            if( err ){
+                res.json(500,{msg:'upload failed'})
+            }
+
+            files.forEach(function( file,i ){
+                var defer = Q.defer()
+                defers.push(defer.promise)
+                result[i] = {name:file.filename,size:file.size}
+                Attachment.create({
+                    uid: req.session.user ? req.session.user.id : 0,
+                    name: file.filename,
+                    type: file.type,
+                    addr: dir,
+                    size: file.size,
+                    caption: ''
+                }).then(function(attach) {
+                    fs.rename(dir+file.filename, dir+attach.id+'.' + getExtention(file.filename), function(err){
+                        if( err ){
+                            console.log("rename failed",err)
+                            result[i].state = 'failed'
+                            return defer.reject(result[i])
+                        }
+                        result[i].addr = attach.addr
+                        result[i].state='succeed'
+                        result[i].id = attach.id
+                        return defer.resolve(result[i])
+                    })
+                }).catch(function (err) {
+                    console.log("ERR: add image record failed", err)
+                    result[i].state = 'failed'
+                    defer.reject(result[i])
+                })
+            })
+
+
+            Q.allSettled(defers).then(function(){
+                var attach = result.pop()
+                User.find( req.session.user.id).then(function(user){
+                    user.avatar = attach.addr + attach.id
+                    user.save(function( err ){
+                        if( err ){
+                            console.log("save avatar failed")
+                            return res.send(500)
+                        }
+                        
+                        return res.json(200,result)
+                    })
+                })
+
+
+            }).catch(function(){
+                return res.json(500,{msg:'Server Error'})
+            })
+        })
+    }
 };
