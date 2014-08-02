@@ -1,0 +1,3 @@
+body, html,#allmap {width: 100%;height: 100%;overflow: hidden;margin:0;}
+@media (max-device-width: 780px){#golist{display: block!important;}}
+#golist {display: none;}
