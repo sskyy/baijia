@@ -32,25 +32,52 @@ app.controller('authController', function($scope, $state, $resource) {
   };
 });
 
-app.controller('searchController', function($scope, $state,$http) {
+app.controller('searchController', function($scope, $state, $http, locationService) {
   $scope.switchToMap = function() {
     if (true) {
       $state.go('map');
     }
   };
 
-  $scope.keyword = ''
   $scope.search = function(){
 
-      $http('/asset/search',{keyword:$scope.keyword})
-      .success(function( data ){
-        $scope.searchResults = data
-      })
-      .error(function(){
-        //fake data
-        $scope.searchResults = []
-      })
-  }
+    $http({
+      url: '/asset/search',
+      method: 'post',
+      data: {
+        "keyword": $scope.keyword
+      }
+    })
+    .success(function(data){
+      $scope.searchResults = injectDistance(data);
+    })
+    .error(function(){
+      //fake data
+      $scope.searchResults = []
+    });
+
+    function injectDistance(data) {
+
+      locationService.getLocation().then(function(res){
+        var uLat = res.lat;
+        var uLng = res.lng;
+
+        data.forEach(function(i){
+          var sLat = i.owner.points.lat;
+          var sLng = i.owner.points.lng;
+          var distance = locationService.getDistance(uLat, uLng, sLat, sLng);
+          i.distance = distance;
+        });
+
+        // console.log("asset 添加了位置 =>", data);
+        return data;
+
+      });
+
+    }
+
+  };
+
 
 });
 
