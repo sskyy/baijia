@@ -91,7 +91,7 @@ app.factory('mapService', function($http, $q, $rootScope) {
           '<div id="J_markerTip"">'+
               '<div class="tipbox">'+
                   '<h4>'+item.name+'</h4>'+
-                  '<p>'+item.desc+'</p>'+
+                  '<p>'+item.desc+'<span class="price">'+item.price+'</span></p>'+
                   '<p><a href="###">查看详情</a></p>'+
               '</div>'+
           '</div>'

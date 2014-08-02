@@ -1,2 +1,3 @@
 body, html {width: 100%;height: 100%;overflow: hidden;margin:0;}
 .map-area {height: 100%; width: 100%;}
+.price {color: #f60; margin-left: 10px;}
