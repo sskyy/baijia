@@ -50,3 +50,86 @@ to prevent collapsing during animation*/
  * create by jidian
  */
 .ng-scope { height: 100%; width: 100%;}
+
+
+/**
+ * create by yemo
+ */
+
+.scrollable {
+    background-color: #235798;
+}
+
+.login-su-1x {
+    background: url("/images/su.png");
+    width: 191px;
+    height: 190px;
+    margin: 110px auto 40px;
+}
+
+.login-logo-1x {
+    background: url("/images/logo.png");
+    width: 77px;
+    height: 59px;
+    margin: auto;
+    margin-bottom: 50px;
+}
+
+.btn.btn-default {
+    background-color: #ffffff;
+    border: 0px;
+    color: #a4a4a4;
+    font-size: 20px;
+    line-height: 40px;
+}
+
+.index-router {
+    margin-top: 20px;
+    width: 75%;
+    margin: auto;
+}
+
+.login-logo {
+    width: 153px;
+    height: 117px;
+    margin: 130px auto;
+    background: url("/images/logo@2x.png");
+}
+
+.btn.btn-submit {
+    background-color: #28e373;
+    border: 0px;
+    color: #fff;
+    font-size: 20px;
+}
+
+input.form-control, a.form-control {
+    height: 50px;
+}
+
+
+#login {
+    width: 75%;
+    margin: auto;
+}
+
+#login .form-group {
+    padding: 6px 0;
+}
+
+#login .form-submit {
+    padding-top: 6px;
+}
+
+.login-slideway {
+    text-align: center;
+    color: #fff;
+    position: fixed;
+    bottom: 20px;
+    right: 0%;
+    left: 0%;
+}
+
+.login-slideway-sign {
+    margin-top: 10px;
+}
