@@ -102,9 +102,9 @@ app.factory('mapService', function($http, $q, $rootScope) {
     }
   }
 
-  function initMap(me_point) {
+  function initMap(me_pos) {
     var map = new BMap.Map("J_mymap");
-    var me_point = new BMap.Point(121.581, 31.201);
+    var me_point = new BMap.Point(me_pos.lng, me_pos.lat);
     map.centerAndZoom(me_point, 11);
     map.addControl(new BMap.ZoomControl()); //添加地图缩放控件
     createPointsOnMap(map);
