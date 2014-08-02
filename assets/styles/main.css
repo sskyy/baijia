@@ -3,20 +3,49 @@
   display: inline-block;
 }
 
+.asset-btn-group {
+  margin: 0 10px;
+}
+
 .asset-btn {
-  width: 45%;
+  width: 49%;
   height: 100px;
   border-radius: 4px;
+  color: white;
+}
+
+.asset-btn-green {
+  background: #72c180;
+}
+
+.asset-btn-red {
+  background: #df5f63;
+}
+
+.asset-store {
+  height: 165px;
+  border-radius: 4px;
+  margin: 10px;
+  padding: 10px 15px;
+  background: white;
+
+  line-height: 140px;
+  font-size: 24px;
+  color: #fe9e21;
+}
+
+.store-num {
+  font-size: 32px;
 }
 
 .asset-list >a{
-  height: 165px;
+  height: 100px;
 }
 
 .asset-logo {
   display: inline-block;
-  height: 145px;
-  width: 145px;
+  height: 80px;
+  width: 80px;
   border-radius: 4px;
   padding: 5px;
   background: #e7e7e7;
@@ -57,7 +86,7 @@
 }
 
 .list-group .list-group-item{
-  margin: 5px;
+  margin: 10px;
   /*padding: 15px 15px;*/
   border-radius: 3px 3px 3px 3px;
 }

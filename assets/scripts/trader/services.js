@@ -8,7 +8,7 @@ app.factory('orderService', function($http, $q) {
       var deferred = $q.defer();
 
       $http({
-        url: '/order/list',
+        url: '/order',
         method: 'GET'
       })
       .success(deferred.resolve)
