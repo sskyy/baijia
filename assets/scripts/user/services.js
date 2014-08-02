@@ -62,12 +62,11 @@ app.factory('mapService', function($http, $q) {
         marker.addEventListener("click", function(){this.openInfoWindow(infoWindow);});
       })(i);
     }
-
   }
 
-  function initMap() {
-    var me_point = new BMap.Point(121.581, 31.201); //用户当前位置坐标点
+  function initMap(me_point) {
     var map = new BMap.Map("J_mymap");
+    var me_point = new BMap.Point(121.581, 31.201);
     map.centerAndZoom(me_point, 11);
     map.addControl(new BMap.ZoomControl()); //添加地图缩放控件
     createPointsOnMap(map);
@@ -76,13 +75,15 @@ app.factory('mapService', function($http, $q) {
   return {
     initMap: initMap
   };
-};
+});
 
-app.factory('locationService', function() {
+app.factory('locationService', function($http, $q) {
+
 
   var getLocation = function() {
 
     var geolocation = {};
+    var deferred = $q.defer();
 
     clouda.device.geolocation.get({
 
@@ -91,20 +92,23 @@ app.factory('locationService', function() {
           "lng": data.longitude,
           "lat": data.latitude
         };
-
+        deferred.resolve(geolocation);
         console.log("ok =>", geolocation);
         return geolocation;
       },
 
       onfail: function(err) {
         geolocation = {
-          "lng": 121.5810737,
-          "lat": 31.201464299999998
+          "lng": 121.581,
+          "lat": 31.201
         };
+        deferred.resolve(geolocation);
         console.log("error =>", geolocation);
         return geolocation;
       }
     });
+
+    return deferred.promise;
   };
 
   return {

@@ -38,15 +38,11 @@ app.controller('searchController', function($scope, $state,$http) {
 
 });
 
-<<<<<<< HEAD
-app.controller('mapController', function($scope, mapService) {
-  mapService.initMap();
-  console.log('map start');
-=======
-app.controller('mapController', function($scope, $state, locationService) {
-
-
->>>>>>> 92c71c07bfac14811d0412a9884b84917ccb1fd4
+app.controller('mapController', function($scope, mapService, locationService) {
+  locationService.getLocation().then(function(res){
+    mapService.initMap(new BMap.Point(res.lng, res.lat));
+    console.log('map start');
+  });
 });
 
 app.controller('buyController', function($scope) {
