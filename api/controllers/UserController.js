@@ -162,5 +162,23 @@ module.exports = {
                 return res.json(500,{msg:'Server Error'})
             })
         })
+    },
+
+    setName : function( req, res){
+
+        if( !req.session.user || !req.param('username')){
+            return res.send(406)
+        }
+
+        User.find( req.session.user.id).then(function(user){
+            user.name = req.param('username')
+            user.save(function(err){
+                if( err){
+                    console.log("set name failed")
+                    return res.send(500)
+                }
+                return res.send(200)
+            })
+        })
     }
 };
