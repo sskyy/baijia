@@ -33,11 +33,12 @@ app.controller('authController', function($scope, $state, $resource) {
 });
 
 app.controller('searchController', function($scope, $rootScope, $state, $http, locationService, assetService) {
-  $scope.switchToMap = function() {
-    if (true) {
-      $state.go('map');
+
+  assetService.list().then(
+    function(data) {
+      $scope.suggests = data;
     }
-  };
+  );
 
   var timeout;
   $scope.search = function() {

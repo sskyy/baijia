@@ -28,10 +28,10 @@
       ng-model="keyword"
       ng-change="search()">
 
-    <div class="scrollable">
+    <div class="scrollable" style="padding-top: 50px">
       <div class="scrollable-content">
         <!-- 搜索列表 -->
-        <div class="list-group" >
+        <div class="list-group" ng-show="keyword">
           <a ng-repeat="asset in assets" href="#" class="list-group-item">
             {{ asset }} <i class="fa fa-chevron-right pull-right"></i>
           </a>

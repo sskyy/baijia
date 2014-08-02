@@ -4,6 +4,19 @@ var app = angular.module('app');
 
 app.factory('assetService', function($http, $q) {
 
+    var list = function(type) {
+      var deferred = $q.defer();
+
+      $http({
+        url: '/asset',
+        method: 'GET'
+      })
+      .success(deferred.resolve)
+      .error(deferred.reject);
+
+      return deferred.promise;
+    };
+
     var search = function(keyword) {
       var deferred = $q.defer();
 
@@ -22,7 +35,8 @@ app.factory('assetService', function($http, $q) {
 
 
     return {
-      search: search
+      search: search,
+      list: list
     };
   });
 
