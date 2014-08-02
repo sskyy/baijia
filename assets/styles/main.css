@@ -63,6 +63,7 @@
 
 /* 底部样式 */
 .navbar-absolute-bottom {
+  border-top: 0 !important;
   background: #fe9e21 !important;
 }
 
