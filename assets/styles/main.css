@@ -13,12 +13,16 @@
 }
 
 /* 底部样式 */
+.navbar-absolute-bottom {
+  background: #fe9e21 !important;
+}
+
 .navbar-absolute-bottom a{
   color: white !important;
 }
 
 .navbar-absolute-bottom .active {
-  color: rgb(255, 224, 0) !important;
+  color: #d47e0f !important;
 }
 
 /* 列表样式 */

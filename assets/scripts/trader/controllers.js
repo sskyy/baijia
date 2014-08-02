@@ -35,8 +35,13 @@ app.controller('mapController', function($scope) {
 
 });
 
-app.controller('storeController', function($scope) {
-  console.log('storeController');
+app.controller('storeController', function($scope, storeService) {
+  storeService.list()
+    .then(
+      function(data) {
+        $scope.assets = data;
+      }
+    );
 });
 
 app.controller('addStoreController', function($scope) {

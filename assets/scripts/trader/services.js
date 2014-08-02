@@ -22,3 +22,25 @@ app.factory('orderService', function($http, $q) {
       list: list
     };
   });
+
+
+app.factory('storeService', function($http, $q) {
+
+    var list = function(type) {
+      var deferred = $q.defer();
+
+      $http({
+        url: '/asset',
+        method: 'GET'
+      })
+      .success(deferred.resolve)
+      .error(deferred.reject);
+
+      return deferred.promise;
+    };
+
+
+    return {
+      list: list
+    };
+  });

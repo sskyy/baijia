@@ -1,7 +1,7 @@
 
 <div class="navbar navbar-app navbar-absolute-top">
   <div class="navbar-brand navbar-brand-center">
-    <span class="ng-scope">库存列表</span>
+    <span class="ng-scope">我的库存</span>
   </div>
 </div>
 
@@ -24,13 +24,13 @@
     <div class="scrollable" style="background: #eee">
       <div class="scrollable-content">
         <div class="list-group order-list">
-          <a ng-repeat="order in orders" href="#" class="list-group-item">
+          <a ng-repeat="as in assets" href="#" class="list-group-item">
             <span class="user-logo">头像</span>
             <span>
               用户名： 滇哥
               订单： 一只70瓦的电灯泡
             </span>
-            {{ order }}
+            {{ as }}
             <span class="pull-right">3.4 公里</span>
           </a>
         </div>
