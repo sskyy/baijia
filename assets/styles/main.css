@@ -1,3 +1,47 @@
+
+.user-logo {
+  display: inline-block;
+}
+
+/* 重写样式 */
+
+/* 顶部样式 */
+.navbar-absolute-top {
+  border-bottom-width: 0 !important;
+  background: #235798 !important;
+  color: white !important;
+}
+
+/* 底部样式 */
+.navbar-absolute-bottom {
+  background: #fe9e21 !important;
+}
+
+.navbar-absolute-bottom a{
+  color: white !important;
+}
+
+.navbar-absolute-bottom .active {
+  color: #d47e0f !important;
+}
+
+/* 列表样式 */
+.list-group-item:first-child, a.list-group-item:first-child {
+  border-top-right-radius: 3px !important;
+  border-top-left-radius: 3px !important;
+}
+
+.list-group-item:last-child, a.list-group-item:last-child {
+  border-bottom-right-radius: 3px !important;
+  border-bottom-left-radius: 3px !important;
+}
+
+.list-group .list-group-item{
+  margin: 5px;
+  padding: 15px 15px;
+  border-radius: 3px 3px 3px 3px;
+}
+
 /* Have to set height explicity on ui-view
 to prevent collapsing during animation*/
 .well[ui-view]{
@@ -46,4 +90,84 @@ to prevent collapsing during animation*/
   transform:translate3d(100px, 0, 0);
 }
 
-.map-area {height: 100%;width: 100%;}
+/**
+ * create by yemo
+ */
+
+.scrollable {
+    background-color: #235798;
+}
+
+.login-su-1x {
+    background: url("/images/su.png");
+    width: 191px;
+    height: 190px;
+    margin: 110px auto 40px;
+}
+
+.login-logo-1x {
+    background: url("/images/logo.png");
+    width: 77px;
+    height: 59px;
+    margin: auto;
+    margin-bottom: 50px;
+}
+
+.btn.btn-default {
+    background-color: #ffffff;
+    border: 0px;
+    color: #a4a4a4;
+    font-size: 20px;
+    line-height: 40px;
+}
+
+.index-router {
+    margin-top: 20px;
+    width: 75%;
+    margin: auto;
+}
+
+.login-logo {
+    width: 153px;
+    height: 117px;
+    margin: 130px auto;
+    background: url("/images/logo@2x.png");
+}
+
+.btn.btn-submit {
+    background-color: #28e373;
+    border: 0px;
+    color: #fff;
+    font-size: 20px;
+}
+
+input.form-control, a.form-control {
+    height: 50px;
+}
+
+
+#login {
+    width: 75%;
+    margin: auto;
+}
+
+#login .form-group {
+    padding: 6px 0;
+}
+
+#login .form-submit {
+    padding-top: 6px;
+}
+
+.login-slideway {
+    text-align: center;
+    color: #fff;
+    position: fixed;
+    bottom: 20px;
+    right: 0%;
+    left: 0%;
+}
+
+.login-slideway-sign {
+    margin-top: 10px;
+}

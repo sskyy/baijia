@@ -82,3 +82,24 @@ app.factory('captureMediaService',function($http, $q){
 
 })
 
+
+app.factory('storeService', function($http, $q) {
+
+    var list = function(type) {
+      var deferred = $q.defer();
+
+      $http({
+        url: '/asset',
+        method: 'GET'
+      })
+      .success(deferred.resolve)
+      .error(deferred.reject);
+
+      return deferred.promise;
+    };
+
+
+    return {
+      list: list
+    };
+  });

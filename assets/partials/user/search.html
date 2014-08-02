@@ -17,12 +17,25 @@
   </div>
 
   <div class="app-content">
+    <input type="search"
+      class="form-control app-search"
+      placeholder="Search.."
+      ng-model="keyword"
+      ng-change="search()">
+
     <div class="scrollable">
       <div class="scrollable-content">
-        <button ng-click="search()">Search</button>
-        <div class="list-group">
-          <a ng-repeat="order in orders" href="#" class="list-group-item">
-            {{ order }} <i class="fa fa-chevron-right pull-right"></i>
+        <!-- 搜索列表 -->
+        <div class="list-group" ng-show="keyword">
+          <a ng-repeat="asset in assets" href="#" class="list-group-item">
+            {{ asset }} <i class="fa fa-chevron-right pull-right"></i>
+          </a>
+        </div>
+
+        <!-- 推荐列表 -->
+        <div class="list-group" ng-hide="keyword">
+          <a ng-repeat="s in suggests" href="#" class="list-group-item">
+            {{ s }} <i class="fa fa-chevron-right pull-right"></i>
           </a>
         </div>
       </div>

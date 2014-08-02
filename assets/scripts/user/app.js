@@ -5,19 +5,30 @@
 var app = angular.module('app', [
   'ui.router',
   'mobile-angular-ui',
-    'ngResource'
+  'ngResource'
 ]);
 
 // 路由
 app.config(function($stateProvider, $urlRouterProvider) {
-  $urlRouterProvider.otherwise('/user');
+  $urlRouterProvider.otherwise('/login');
 
   // 用户
   $stateProvider
-    .state('user', {
-      url: '/user',
+    .state('login', {
+      url: '/login',
       templateUrl: 'partials/user/user.html',
-      controller: 'loginController'
+      controller: 'authController',
+      data: {
+        action: 'login'
+      }
+    })
+    .state('register', {
+      url: '/register',
+      templateUrl: 'partials/user/user.html',
+      controller: 'authController',
+      data: {
+        action: 'register'
+      }
     })
     .state('search', {
       url: '/search',
