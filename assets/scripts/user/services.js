@@ -45,7 +45,7 @@ app.factory('assetService', function($http, $q) {
  *
  */
 
-app.factory('mapService', function($http, $q) {
+app.factory('mapService', function($http, $q, $rootScope) {
 
 
 
@@ -54,22 +54,15 @@ app.factory('mapService', function($http, $q) {
      * 数据格式说明：
      * [{ name: 'xxx', 'id': '', point: obj }]
      */
-    var dataList = [];
+    var dataList = $rootScope.searchResults;
     var bounds = map.getBounds();
     var sw = bounds.getSouthWest();
     var ne = bounds.getNorthEast();
     var lngSpan = Math.abs(sw.lng - ne.lng);
     var latSpan = Math.abs(ne.lat - sw.lat);
 
-    for (var i = 0; i < 15; i ++) {
-      var point = new BMap.Point(sw.lng + lngSpan * (Math.random() * 0.7), ne.lat - latSpan * (Math.random() * 0.7));
-      dataList.push({
-        name: '拉拉拉拉啦',
-        desc: '拉拉拉拉拉拉拉拉我是desc。。。。。你来咬我呀～',
-        id: 1,
-        point: point
-      });
-      console.log(point)
+    for (var i = 0; i < dataList.length; i ++) {
+      dataList.point = new BMap.Point( dataList[i].owner.point.lng, dataList[i].owner.point.lat);
     }
     return dataList;
   }
