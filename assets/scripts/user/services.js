@@ -131,6 +131,7 @@ app.factory('locationService', function($http, $q) {
           "lat": data.latitude
         };
         deferred.resolve(geolocation);
+        console.log("获取个人位置 =>", geolocation);
       },
 
       onfail: function(err) {
