@@ -4,7 +4,8 @@
 // 模块依赖
 var app = angular.module('app', [
   'ui.router',
-  'mobile-angular-ui'
+  'mobile-angular-ui',
+    'ngResource'
 ]);
 
 // 路由
@@ -41,5 +42,12 @@ app.run(['$rootScope', '$state', '$stateParams',
   function($rootScope, $state, $stateParams) {
     $rootScope.$state = $state;
     $rootScope.$stateParams = $stateParams;
+
+    // 初始化轻应用
+    clouda.lightInit({
+      ak:"iUQs1O9pmkIvfZ1zmy8sm7Gk",
+      module:["media"]
+    });
   }
 ]);
+

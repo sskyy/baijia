@@ -1,4 +1,12 @@
-<h1>用户首页</h1>
-
-
 <button ng-click="login()">登陆</button>
+<form id="login" ng-submit="login()">
+  <p class="field">
+    <input type="text" ng-model="userId" placeholder="手机号码" required>
+  </p>
+  <p class="field">
+    <input type="password" ng-model="password" placeholder="帐号密码" required>
+  </p>
+  <p class="field">
+    <input type="submit" value="登录">
+  </p>
+</form>

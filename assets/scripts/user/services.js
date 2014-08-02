@@ -71,13 +71,44 @@ app.factory('mapService', function($http, $q) {
     map.centerAndZoom(me_point, 11);
     map.addControl(new BMap.ZoomControl()); //添加地图缩放控件
     createPointsOnMap(map);
-    // var local = new BMap.LocalSearch(map, {
-    //   renderOptions:{map: map}
-    // });
-    // local.search("景点");
   }
 
   return {
     initMap: initMap
   };
+};
+
+app.factory('locationService', function() {
+
+  var getLocation = function() {
+
+    var geolocation = {};
+
+    clouda.device.geolocation.get({
+
+      onsuccess: function(data) {
+        geolocation = {
+          "lng": data.longitude,
+          "lat": data.latitude
+        };
+
+        console.log("ok =>", geolocation);
+        return geolocation;
+      },
+
+      onfail: function(err) {
+        geolocation = {
+          "lng": 121.5810737,
+          "lat": 31.201464299999998
+        };
+        console.log("error =>", geolocation);
+        return geolocation;
+      }
+    });
+  };
+
+  return {
+    getLocation: getLocation
+  };
+
 });
