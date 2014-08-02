@@ -20,15 +20,18 @@ app.config(function($stateProvider, $urlRouterProvider) {
     })
     .state('search', {
       url: '/search',
-      templateUrl: 'partials/user/search.html'
+      templateUrl: 'partials/user/search.html',
+      controller: 'searchController'
     })
     .state('map', {
       url: '/map',
-      templateUrl: 'partials/user/map.html'
+      templateUrl: 'partials/user/map.html',
+      controller: 'mapController'
     })
     .state('buy', {
       url: '/buy',
-      templateUrl: 'partials/user/buy.html'
+      templateUrl: 'partials/user/buy.html',
+      controller: 'buyController'
     });
 
 });
