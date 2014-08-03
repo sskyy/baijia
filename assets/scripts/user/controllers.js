@@ -23,7 +23,7 @@ app.controller('authController', function($scope, $state, $resource, $rootScope)
 
     var auth = Authorization.save(credentials, function() {
       if (auth && auth.status === 'success') {
-        $rootScope.user = auth.user;
+        $rootScope.user = auth;
         $state.go('search');
       } else {
         onError(auth);
