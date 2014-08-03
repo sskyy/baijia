@@ -117,7 +117,7 @@ app.controller('assetsController',function($scope){
         $http({
             url : '/order',
             method : 'post',
-            data : {tid : asset.owner.id, name: asset.name}
+            data : {tid : asset.owner.id, name: asset.name, user : $rootScope.user}
         }).success(function(){
             asset.orderred = true
         })
