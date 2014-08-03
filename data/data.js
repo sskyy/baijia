@@ -45,6 +45,7 @@ _.each( userNames,function( userName,i ){
         userId : userPhone + i,
         password : 123123,
         assets : [],
+        type : 'user',
         avatar :'/images/avatar_'+ Math.floor( 10*Math.random()) +'.png'
     }
     data.push(user)
