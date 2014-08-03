@@ -7,6 +7,7 @@ var app = angular.module('app', [
   'mobile-angular-ui',
   'ngAnimate',
   'ngResource',
+  'ngCookies',
   'angular-md5'
 ]);
 

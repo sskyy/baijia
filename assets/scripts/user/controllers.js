@@ -3,7 +3,7 @@
 var app = angular.module('app');
 
 // 登陆逻辑
-app.controller('authController', function($scope, $state, $resource) {
+app.controller('authController', function($scope, $state, $resource, $rootScope) {
   var actionTextMap = {
     login: '登录',
     register: '注册'
@@ -18,11 +18,16 @@ app.controller('authController', function($scope, $state, $resource) {
     var credentials = {
       userId: this.userId,
       password: this.password,
-      username: this.userId
+      name: this.userId
     };
 
     var auth = Authorization.save(credentials, function() {
-      auth && auth.status === 'success' ? $state.go('search') : onError(auth);
+      if (auth && auth.status === 'success') {
+        $rootScope.user = auth.user;
+        $state.go('search');
+      } else {
+        onError(auth);
+      }
     }, onError);
 
     function onError (error) {
@@ -32,7 +37,7 @@ app.controller('authController', function($scope, $state, $resource) {
   };
 });
 
-app.controller('manageController', function ($scope, $state, md5) {
+app.controller('manageController', function ($scope, $state, $http, $cookieStore, md5) {
   var options = {
     'bucket': 'baidu-baijia',
     'expiration': new Date().getTime() + 60,
@@ -44,6 +49,22 @@ app.controller('manageController', function ($scope, $state, md5) {
 
   $scope.policy = policy;
   $scope.signature = signature;
+  $scope.upload = function () {
+    $http.put('/user', {
+      id: $cookieStore.get('userid') || 0,
+      avatar: 'http://baidu-baijia.b0.upaiyun.com/avatar.jpg'
+    }).success(showResult).error(showResult);
+  };
+  $scope.setName = function () {
+    $http.put('/user', {
+      id: $cookieStore.get('userid') || 0,
+      name: this.username
+    }).success(showResult).error(showResult);
+  };
+
+  function showResult (data) {
+    console.log(data);
+  }
 
   function getRandomName() {
     var chars = 'ABCDEFGHJKMNPQRSTWXYZabcdefhijkmnprstwxyz2345678';
@@ -125,29 +146,41 @@ app.controller('assetsController',function($scope){
         $http({
             url : '/order',
             method : 'post',
-            data : {tid : asset.owner.id, name: asset.name}
+            data : {tid : asset.owner.id, name: asset.name, user : $rootScope.user}
         }).success(function(){
             asset.orderred = true
         })
     }
 
-    $
+
 })
 
-app.controller('mapController', function($scope, $q, mapService2, dataService, locationService) {
-  var deferred = $q.defer();
-  // deferred.resolve()
-  // .then(function(res){
-  //   mapService.initMap(new BMap.Point(res.lng, res.lat));
-  //   console.log('map start');
-  // });
-  deferred.when(locationService.getLocation(), dataService.getMapData())
-  .then(function(cur_point, dataList){
-    mapService2.renderMap({
-      user_point: cur_point,
-      dataList: dataList
-    })
-  })
+
+app.controller('mapController', function($rootScope, $scope, $q, mapService2, assetService, locationService) {
+
+  var dataList = $rootScope.searchResults;
+
+  locationService.getLocation().then(function(cur_point) {
+
+    if(dataList) { //有数据
+      console.log('---->有数据,显示地图');
+      mapService2.renderMap({
+        user_point: cur_point,
+        dataList: dataList
+      });
+    } else { //没数据
+      console.log('---->没数据,加载数据')
+      assetService.list().then(function(_dataList){
+        mapService2.renderMap({
+          user_point: cur_point,
+          dataList: _dataList
+        });
+      });
+    }
+
+  });
+
+  console.log('map start');
 });
 
 app.controller('buyController', function($scope) {
