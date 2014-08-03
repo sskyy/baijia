@@ -151,26 +151,26 @@ app.controller('addReqController', function($scope) {
   console.log('addReqController');
 });
 
-app.controller('assetsController',function($scope){
+app.controller('assetsController',function($scope, locationService){
     //$rootScope.searchResults
     //$rootScope.searchKeyword
 
     var currentLocation
 
-    locationService.getLocation().then(function(res){
-        currentLocation = res
-        var uLat = res.lat;
-        var uLng = res.lng;
+    // locationService.getLocation().then(function(res){
+    //     currentLocation = res
+    //     var uLat = res.lat;
+    //     var uLng = res.lng;
 
-        $scope.searchResults.forEach(function(i){
-            var sLat = i.owner.points.lat;
-            var sLng = i.owner.points.lng;
-            var distance = locationService.getDistance(uLat, uLng, sLat, sLng);
-            i.distance = distance;
-        });
-        console.log("asset 添加了位置 =>", data);
-        $scope.assets = $scope.searchResults;
-    });
+    //     $scope.searchResults.forEach(function(i){
+    //         var sLat = i.owner.points.lat;
+    //         var sLng = i.owner.points.lng;
+    //         var distance = locationService.getDistance(uLat, uLng, sLat, sLng);
+    //         i.distance = distance;
+    //     });
+    //     console.log("asset 添加了位置 =>", data);
+    //     $scope.assets = $scope.searchResults;
+    // });
 
     $scope.order = function( asset ){
         $http({
@@ -182,8 +182,7 @@ app.controller('assetsController',function($scope){
         })
     }
 
-
-})
+});
 
 
 
