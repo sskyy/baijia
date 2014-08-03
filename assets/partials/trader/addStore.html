@@ -1,18 +1,18 @@
-<form action="">
+<form ng-submit="add()">
     <div class="commbox">
         <div class="innerbox">
             <div class="formarea">
                 <div class="am-filed">
                     <label>商品名称</label>
-                    <input type="text" class="am-input" />
+                    <input type="text" class="am-input" ng-model="name" />
                 </div>
                 <div class="am-filed">
-                    <label>商品名称</label>
-                    <input type="text" class="am-input" />
+                    <label>商品价格</label>
+                    <input type="text" class="am-input" ng-model="price" />
                 </div>
                 <div class="am-filed">
-                    <label>商品名称</label>
-                    <input type="text" class="am-input" />
+                    <label>条形编码</label>
+                    <input type="text" class="am-input" ng-model="qrcode" />
                 </div>
             </div>
             <div class="imgupload">
@@ -22,8 +22,7 @@
         </div>
     </div>
     <div class="btnwrap am-flexbox">
-        <button class="am-button am-button-green">确认提交</button>
+        <input type="submit" class="am-button am-button-green" value="确认提交" />
         <button class="am-button am-button-blue">继续添加商品</button>
     </div>
 </form>
-

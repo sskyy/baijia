@@ -19,6 +19,7 @@ _.each( traderNames,function( traderName,i ){
         password : '123123',
         type : 'trader',
         assets : [],
+        avatar : '/images/avatar_'+ Math.floor( 10*Math.random()) +'.png',
         points : {
             lng : lng + 0.1*Math.random(),
             lat : lat + 0.1*Math.random()
@@ -33,6 +34,20 @@ _.each( traderNames,function( traderName,i ){
         })
     })
     data.push( trader )
+})
+
+var userNames = ['小新','白白','加缪','达尔文','诺贝尔','济滇','青栀','桐杰','夜末','子溯','宫煌'],
+    userPhone = 13600000000
+
+_.each( userNames,function( userName,i ){
+    var user = {
+        name :userName,
+        userId : userPhone + i,
+        password : 123123,
+        assets : [],
+        avatar :'/images/avatar_'+ Math.floor( 10*Math.random()) +'.png'
+    }
+    data.push(user)
 })
 
 module.exports = data

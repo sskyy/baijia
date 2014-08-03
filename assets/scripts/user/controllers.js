@@ -23,7 +23,7 @@ app.controller('authController', function($scope, $state, $resource, $rootScope)
 
     var auth = Authorization.save(credentials, function() {
       if (auth && auth.status === 'success') {
-        $rootScope.user = auth.user;
+        $rootScope.user = auth;
         $state.go('search');
       } else {
         onError(auth);
@@ -86,44 +86,95 @@ app.controller('searchController', function($scope, $rootScope, $state, $http, l
   // btn 文案
   $scope.searchBtnText = '搜索';
 
-  // 搜索事件
-  $scope.search = function() {
+  // 点击搜索框事件
+  $scope.assetClick = function() {
+    if($scope.searchBtnText === '添加成功') {
+      $scope.notFound = false;
+      $scope.searchBtnText = '搜索';
+    }
+  }
 
-    // 搜索商品
-    assetService.search('xxxxx')
-      .then(
-        function(data) {
 
-          // 未找到的情况
-          if (data.length === 0) {
-            $scope.notFound = true;
+  // 提交事件
+  $scope.assetSubmit = function() {
 
-            // 修改文案
-            $scope.searchBtnText = '添加需求';
+    if ($scope.searchBtnText === '搜索') {
+
+      // 搜索商品
+      assetService.search($scope.assetName)
+        .then(
+          function(data) {
+            console.log("data =>", data);
+
+            // 未找到的情况
+            if (data.length === 0) {
+              $scope.notFound = true;
+              $scope.searchBtnText = '添加需求';
+            } else {
+
+              // 跳转到结果
+              $rootScope.searchResults = data;
+              $state.go('assets');
+            }
           }
-        }
-      );
+        );
+
+    } else {
+      $http({
+          url : '/require',
+          method : 'post',
+          data : {
+            name : $scope.assetName,
+            user : {
+              name: $rootScope.user.name || ''
+            }
+          }
+        }).success(function(){
+          $scope.searchBtnText = "添加成功";
+        });
+
+    }
   };
 });
 
 app.controller('discoveryController', function($scope, $rootScope, $state, $http, locationService, assetService) {
 
+    var currentLocation
 
+    locationService.getLocation().then(function(res){
+        currentLocation = res
+        var uLat = res.lat;
+        var uLng = res.lng;
 
+        $http('/user?type=trader').success(function( traders){
+            traders.forEach(function(i){
+                var sLat = i.points.lat;
+                var sLng = i.points.lng;
+                var distance = locationService.getDistance(uLat, uLng, sLat, sLng);
+                i.distance = distance;
+            });
+            console.log("asset 添加了位置 =>", data);
+            $scope.traders = data;
+        })
+    });
 });
 
-app.controller('requirementsController', function($scope) {
+app.controller('requirementsController', function($scope,$http) {
 
-    $scope.requires = [{
-        name : '冰红茶',
-        providers : [{
-            name : "新新超市",
-            price : 25
-        }]
-    },{
-        name : '冰绿茶',
-        providers : []
-    }]
+//    $scope.requires = [{
+//        name : '冰红茶',
+//        providers : [{
+//            name : "新新超市",
+//            price : 25
+//        }]
+//    },{
+//        name : '冰绿茶',
+//        providers : []
+//    }]
+
+    $http('/require').success(function(data){
+        $scope.requires = data
+    })
 
 });
 
@@ -131,64 +182,43 @@ app.controller('addReqController', function($scope) {
   console.log('addReqController');
 });
 
-app.controller('assetsController',function($scope){
+
+app.controller('assetsController',function($scope, locationService){
+
     //$rootScope.searchResults
     //$rootScope.searchKeyword
 
-    locationService.getLocation().then(function(res){
-        var uLat = res.lat;
-        var uLng = res.lng;
+    var currentLocation
 
-        $scope.searchResults.forEach(function(i){
-            var sLat = i.owner.points.lat;
-            var sLng = i.owner.points.lng;
-            var distance = locationService.getDistance(uLat, uLng, sLat, sLng);
-            i.distance = distance;
-        });
-        console.log("asset 添加了位置 =>", data);
-        $scope.assets = $scope.searchResults;
-    });
+    // locationService.getLocation().then(function(res){
+    //     currentLocation = res
+    //     var uLat = res.lat;
+    //     var uLng = res.lng;
+
+    //     $scope.searchResults.forEach(function(i){
+    //         var sLat = i.owner.points.lat;
+    //         var sLng = i.owner.points.lng;
+    //         var distance = locationService.getDistance(uLat, uLng, sLat, sLng);
+    //         i.distance = distance;
+    //     });
+    //     console.log("asset 添加了位置 =>", data);
+    //     $scope.assets = $scope.searchResults;
+    // });
 
     $scope.order = function( asset ){
         $http({
             url : '/order',
             method : 'post',
-            data : {tid : asset.owner.id, name: asset.name, user : $rootScope.user}
+            data : {tid : asset.owner.id, name: asset.name, user : $rootScope.user,point:currentLocation}
         }).success(function(){
             asset.orderred = true
         })
     }
 
-
-})
-
-
-app.controller('mapController', function($rootScope, $scope, $q, mapService2, assetService, locationService) {
-
-  var dataList = $rootScope.searchResults;
-
-  locationService.getLocation().then(function(cur_point) {
-
-    if(dataList) { //有数据
-      console.log('---->有数据,显示地图');
-      mapService2.renderMap({
-        user_point: cur_point,
-        dataList: dataList
-      });
-    } else { //没数据
-      console.log('---->没数据,加载数据')
-      assetService.list().then(function(_dataList){
-        mapService2.renderMap({
-          user_point: cur_point,
-          dataList: _dataList
-        });
-      });
-    }
-
-  });
-
-  console.log('map start');
 });
+
+
+
 
 app.controller('buyController', function($scope) {
   console.log('buyController');

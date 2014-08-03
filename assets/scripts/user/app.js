@@ -33,6 +33,19 @@ app.config(function($stateProvider, $urlRouterProvider) {
         action: 'register'
       }
     })
+
+    // 用户地图路由
+    .state('user_map_assets', {
+      url: '/user_map_assets',
+      templateUrl: 'partials/user/map.html',
+      controller: 'user_map_assets'
+    })
+    .state('user_map_trader', {
+      url: '/user_map_trader',
+      templateUrl: 'partials/user/map.html',
+      controller: 'user_map_trader'
+    })
+
     .state('manage', {//用户设置
       url: '/manage',
       templateUrl: 'partials/user/manage.html',
