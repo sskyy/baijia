@@ -39,6 +39,7 @@ app.controller('dashboardController', function($scope, $state, orderService) {
     .then(
       function(data) {
         $scope.orders = data;
+        console.log($scope.orders);
       },
       function(error) {
         console.log('error:' + error);
@@ -55,17 +56,6 @@ app.controller('orderController', function($scope,$rootScope) {
     })
 
 });
-
-app.controller('orderController', function($scope,$rootScope) {
-
-    $http('/order').success(function(data){
-        $scope.orders = data
-        $rootScope.orders = data
-        console.log( data)
-    })
-
-});
-
 
 app.controller('discoverController', function($scope,$rootScope) {
 
