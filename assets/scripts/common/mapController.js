@@ -45,7 +45,7 @@ app.controller('trader_map_use', function(locationService, mapService2, $http) {
 app.controller('trader_map_order', function(locationService,mapService2,$http) {
 
   locationService.getLocation().then(function(cur_point) {
-    $http.get('/user?type=trader').success(function(_dataList){
+    $http.get('/order').success(function(_dataList){
         console.log(_dataList);
         mapService2.renderMap({
           user_point: cur_point,
