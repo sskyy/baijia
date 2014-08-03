@@ -61,6 +61,7 @@ app.controller('orderController', function($scope,$rootScope) {
     $http('/order').success(function(data){
         $scope.orders = data
         $rootScope.orders = data
+        console.log( data)
     })
 
 });

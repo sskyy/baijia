@@ -27,7 +27,7 @@ module.exports = {
   _config: {},
   login: function(req, res) {
     if (req.session.user && req.session.user.id) {
-      return res.send(200, _.extend(user, { status: 'success' }));
+      return res.send(200, _.extend( req.session.user, { status: 'success' }));
     }
 
     var userId = req.param('userId');

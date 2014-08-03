@@ -86,10 +86,10 @@
   display: inline-block;
   height: 80px;
   width: 80px;
-  border-radius: 4px;
-  padding: 5px;
+  border-radius: 50%;
   background: #e7e7e7;
   float: left;
+    overflow: hidden;
 }
 
 /* 重写样式 */
