@@ -60,7 +60,15 @@ app.controller('manageController', function ($scope, $state, md5) {
 
 app.controller('searchController', function($scope, $rootScope, $state, $http, locationService, assetService) {
   $scope.searchBtnText = '搜索';
-
+      // assetService.search($scope.keyword)
+      //   .then(
+      //     function(data) {
+      //       $scope.injectDistance(data);
+      //     },
+      //     function() {
+      //       $scope.assets = [];
+      //     }
+      //   );
   $scope.search = function() {
 
     if (true) {
