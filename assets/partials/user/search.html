@@ -22,14 +22,12 @@
           style="width: 50%; display: block; margin: 80px auto">
 
         <div class="user-searh">
-
           <input type="search"
-            class="custom-search"
+            class="custom-search" ng-model="assetName"
+            ng-click="assetClick()"
             placeholder="输入您找的商品">
-
           <span class="not-found" ng-show="notFound">抱歉！未找到对应商品</span>
-
-          <span ng-click="search()" class="pull-right add-req" style="margin: 10px; color: white; margin-right: 5%;">{{searchBtnText}}</span>
+          <span ng-click="assetSubmit()" class="pull-right add-req" style="margin: 10px; color: white; margin-right: 5%;">{{searchBtnText}}</span>
         </div>
       </div>
     </div>
