@@ -96,14 +96,24 @@ app.controller('storeController', function($scope, storeService) {
   };
 });
 
-app.controller('addStoreController', function($scope, qrService) {
+app.controller('addStoreController', function($scope, $http, $state, qrService) {
 
   $scope.add = function() {
+    $http.post('/asset', {
+      name: this.name,
+      price: this.price,
+      img: 'http://baidu-baijia.b0.upaiyun.com/asset1.jpg',
+      qr: ''
+    }).then(function (data) {
+      console.log(data);
+    }, function (err) {
+      console.log(err);
+    });
 
     // 调用条形码扫码功能
-    qrService.openQr().then(function(res){
+    //qrService.openQr().then(function(res){
 
-    });
+    //});
 
   }
 
