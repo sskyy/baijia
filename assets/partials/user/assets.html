@@ -53,11 +53,13 @@
 
         <!-- 推荐列表 -->
         <div class="list-group asset-list" ng-hide="keyword">
-          <a ng-repeat="s in suggests" href="#" class="list-group-item">
-            <span class="asset-logo"></span>
+          <a ng-repeat="a in assets" href="#" class="list-group-item">
+            <span class="asset-logo"><img ng-src="s.owner.avatar"></span>
             <div style="margin-top: 22px;margin-left: 110px;">
-              <span>商品名：{{ s.name }}</span><br>
-              <span>价钱： {{s.price}}</span>
+              <span>商店：{{ a.owner.name }}</span>
+              <span>价格： {{a.price}}</span>
+              <span>{{a.distance}}公里</span>
+              <span><a ng-click="order">下单</a></span>
             </div>
           </a>
         </div>

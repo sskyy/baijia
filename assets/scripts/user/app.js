@@ -32,41 +32,36 @@ app.config(function($stateProvider, $urlRouterProvider) {
         action: 'register'
       }
     })
-    .state('manage', {
+    .state('manage', {//用户设置
       url: '/manage',
       templateUrl: 'partials/user/manage.html',
       controller: 'manageController'
     })
-    .state('search', {
+    .state('search', {//用户首页  带插图
       url: '/search',
       templateUrl: 'partials/user/search.html',
       controller: 'searchController'
     })
-    .state('discovery', {
+    .state('discovery', {//发现商家
       url: '/discovery',
       templateUrl: 'partials/user/discovery.html',
       controller: 'discoveryController'
     })
-    .state('requirements', {
+    .state('requirements', {//我的需求
       url: '/requirements',
       templateUrl: 'partials/user/requirements.html',
       controller: 'requirementsController'
-    })
-    .state('addReq', {
-      url: '/addReq',
-      templateUrl: 'partials/user/addReq.html',
-      controller: 'addReqController'
     })
     .state('map', {
       url: '/map',
       templateUrl: 'partials/user/map.html',
       controller: 'mapController'
     })
-    .state('buy', {
-      url: '/buy',
-      templateUrl: 'partials/user/buy.html',
-      controller: 'buyController'
-    });
+      .state('assets', {//搜索得到的商品列表
+          url: '/assets',
+          templateUrl: 'partials/user/assets.html',
+          controller: 'assetsController'
+      })
 
 });
 

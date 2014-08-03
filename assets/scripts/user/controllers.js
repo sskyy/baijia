@@ -71,50 +71,9 @@ app.controller('searchController', function($scope, $rootScope, $state, $http, l
 });
 
 app.controller('discoveryController', function($scope, $rootScope, $state, $http, locationService, assetService) {
-  $scope.searchMode = false;
-  assetService.list().then(
-    function(data) {
-      $scope.suggests = data;
-    }
-  );
 
-  var timeout;
-  $scope.search = function() {
-    if (true) {
-      clearTimeout(timeout);
-    }
-    timeout = setTimeout(function() {
-      assetService.search($scope.keyword)
-        .then(
-          function(data) {
-            $scope.injectDistance(data);
-          },
-          function() {
-            $scope.assets = [];
-          }
-        );
-    }, 50);
-  };
 
-  $scope.injectDistance = function(data) {
-    locationService.getLocation().then(function(res){
-      var uLat = res.lat;
-      var uLng = res.lng;
 
-      data.forEach(function(i){
-        var sLat = i.owner.points.lat;
-        var sLng = i.owner.points.lng;
-        var distance = locationService.getDistance(uLat, uLng, sLat, sLng);
-        i.distance = distance;
-      });
-
-      console.log("asset 添加了位置 =>", data);
-
-      $scope.assets = data;
-      $rootScope.searchResults = data;
-
-    });
-  };
 });
 
 app.controller('requirementsController', function($scope) {
@@ -135,6 +94,23 @@ app.controller('requirementsController', function($scope) {
 app.controller('addReqController', function($scope) {
   console.log('addReqController');
 });
+
+app.controller('assetsController',function($scope){
+    //$rootScope.searchResults
+    locationService.getLocation().then(function(res){
+        var uLat = res.lat;
+        var uLng = res.lng;
+
+        $scope.searchResults.forEach(function(i){
+            var sLat = i.owner.points.lat;
+            var sLng = i.owner.points.lng;
+            var distance = locationService.getDistance(uLat, uLng, sLat, sLng);
+            i.distance = distance;
+        });
+        console.log("asset 添加了位置 =>", data);
+        $scope.assets = $scope.searchResults;
+    });
+})
 
 app.controller('mapController', function($scope, $q, mapService2, dataService, locationService) {
   var deferred = $q.defer();
