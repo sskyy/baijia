@@ -123,23 +123,35 @@ app.controller('assetsController',function($scope){
         })
     }
 
-    $
+
 })
 
-app.controller('mapController', function($scope, $q, mapService2, dataService, locationService) {
-  var deferred = $q.defer();
-  // deferred.resolve()
-  // .then(function(res){
-  //   mapService.initMap(new BMap.Point(res.lng, res.lat));
-  //   console.log('map start');
-  // });
-  deferred.when(locationService.getLocation(), dataService.getMapData())
-  .then(function(cur_point, dataList){
-    mapService2.renderMap({
-      user_point: cur_point,
-      dataList: dataList
-    })
-  })
+
+app.controller('mapController', function($rootScope, $scope, $q, mapService2, assetService, locationService) {
+
+  var dataList = $rootScope.searchResults;
+
+  locationService.getLocation().then(function(cur_point) {
+
+    if(dataList) { //有数据
+      console.log('---->有数据,显示地图');
+      mapService2.renderMap({
+        user_point: cur_point,
+        dataList: dataList
+      });
+    } else { //没数据
+      console.log('---->没数据,加载数据')
+      assetService.list().then(function(_dataList){
+        mapService2.renderMap({
+          user_point: cur_point,
+          dataList: _dataList
+        });
+      });
+    }
+
+  });
+
+  console.log('map start');
 });
 
 app.controller('buyController', function($scope) {

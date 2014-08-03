@@ -171,14 +171,13 @@ app.factory('locationService', function($http, $q) {
 
 });
 
-app.factory('mapDataService', function() {
+app.factory('mapDataService', function($q, $http) {
 
-  function getData(options, successFn, failFn) {
-    var dataList = $rootScope.searchResults;
-    for (var i = 0; i < dataList.length; i ++) {
-      dataList[i].point = new BMap.Point( dataList[i].owner.points.lng, dataList[i].owner.points.lat);
-    }
-    successFn(dataList);
+  var deferred = $q.defer();
+
+  function getMapData() {
+
+    deferred.resolve(dataList);
   }
 
   return {
