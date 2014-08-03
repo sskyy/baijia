@@ -324,7 +324,7 @@ input.form-control, a.form-control {
                   url("/images/search@2x.png") 2x) 50% 0% no-repeat;
 }
 
-[ui-sref="discovery"]:before {
+[ui-sref="map"]:before, [ui-sref="discovery"]:before {
     background: url("/images/discovery.png");
     background: image-set(url("/images/discovery.png") 1x,
                   url("/images/discovery@2x.png") 2x) 50% 0% no-repeat;
@@ -365,4 +365,120 @@ input.form-control, a.form-control {
                   url("/images/settings@2x.png") 2x) 50% 0% no-repeat;
     background: -ms-image-set(url("/images/settings.png") 1x,
                   url("/images/settings@2x.png") 2x) 50% 0% no-repeat;
+}
+
+[ui-sref="dashboard"]:before {
+    background: url("/images/dashboard.png");
+    background: image-set(url("/images/dashboard.png") 1x,
+                  url("/images/dashboard@2x.png") 2x) 50% 0% no-repeat;
+    background: -webkit-image-set(url("/images/dashboard.png") 1x,
+                  url("/images/dashboard@2x.png") 2x) 50% 0% no-repeat;
+    background: -moz-image-set(url("/images/dashboard.png") 1x,
+                  url("/images/dashboard@2x.png") 2x) 50% 0% no-repeat;
+    background: -o-image-set(url("/images/dashboard.png") 1x,
+                  url("/images/dashboard@2x.png") 2x) 50% 0% no-repeat;
+    background: -ms-image-set(url("/images/dashboard.png") 1x,
+                  url("/images/dashboard@2x.png") 2x) 50% 0% no-repeat;
+}
+
+
+[ui-sref="store"]:before {
+    background: url("/images/store.png");
+    background: image-set(url("/images/store.png") 1x,
+                  url("/images/store@2x.png") 2x) 50% 0% no-repeat;
+    background: -webkit-image-set(url("/images/store.png") 1x,
+                  url("/images/store@2x.png") 2x) 50% 0% no-repeat;
+    background: -moz-image-set(url("/images/store.png") 1x,
+                  url("/images/store@2x.png") 2x) 50% 0% no-repeat;
+    background: -o-image-set(url("/images/store.png") 1x,
+                  url("/images/store@2x.png") 2x) 50% 0% no-repeat;
+    background: -ms-image-set(url("/images/store.png") 1x,
+                  url("/images/store@2x.png") 2x) 50% 0% no-repeat;
+}
+
+/* active */
+.active[ui-sref="search"]:before {
+    background: url("/images/search_active.png");
+    background: image-set(url("/images/search_active.png") 1x,
+                  url("/images/search_active@2x.png") 2x) 50% 0% no-repeat;
+    background: -webkit-image-set(url("/images/search_active.png") 1x,
+                  url("/images/search_active@2x.png") 2x) 50% 0% no-repeat;
+    background: -moz-image-set(url("/images/search_active.png") 1x,
+                  url("/images/search_active@2x.png") 2x) 50% 0% no-repeat;
+    background: -o-image-set(url("/images/search_active.png") 1x,
+                  url("/images/search_active@2x.png") 2x) 50% 0% no-repeat;
+    background: -ms-image-set(url("/images/search_active.png") 1x,
+                  url("/images/search_active@2x.png") 2x) 50% 0% no-repeat;
+}
+
+.active[ui-sref="map"]:before, .active[ui-sref="discovery"]:before {
+    background: url("/images/discovery_active.png");
+    background: image-set(url("/images/discovery_active.png") 1x,
+                  url("/images/discovery_active@2x.png") 2x) 50% 0% no-repeat;
+    background: -webkit-image-set(url("/images/discovery_active.png") 1x,
+                  url("/images/discovery_active@2x.png") 2x) 50% 0% no-repeat;
+    background: -moz-image-set(url("/images/discovery_active.png") 1x,
+                  url("/images/discovery_active@2x.png") 2x) 50% 0% no-repeat;
+    background: -o-image-set(url("/images/discovery_active.png") 1x,
+                  url("/images/discovery_active@2x.png") 2x) 50% 0% no-repeat;
+    background: -ms-image-set(url("/images/discovery_active.png") 1x,
+                  url("/images/discovery_active@2x.png") 2x) 50% 0% no-repeat;
+}
+
+
+.active[ui-sref="requirements"]:before {
+    background: url("/images/requirements_active.png");
+    background: image-set(url("/images/requirements_active.png") 1x,
+                  url("/images/requirements_active@2x.png") 2x) 50% 0% no-repeat;
+    background: -webkit-image-set(url("/images/requirements_active.png") 1x,
+                  url("/images/requirements_active@2x.png") 2x) 50% 0% no-repeat;
+    background: -moz-image-set(url("/images/requirements_active.png") 1x,
+                  url("/images/requirements_active@2x.png") 2x) 50% 0% no-repeat;
+    background: -o-image-set(url("/images/requirements_active.png") 1x,
+                  url("/images/requirements_active@2x.png") 2x) 50% 0% no-repeat;
+    background: -ms-image-set(url("/images/requirements_active.png") 1x,
+                  url("/images/requirements_active@2x.png") 2x) 50% 0% no-repeat;
+}
+
+.active[ui-sref="settings"]:before {
+    background: url("/images/settings_active.png");
+    background: image-set(url("/images/settings_active.png") 1x,
+                  url("/images/settings_active@2x.png") 2x) 50% 0% no-repeat;
+    background: -webkit-image-set(url("/images/settings_active.png") 1x,
+                  url("/images/settings_active@2x.png") 2x) 50% 0% no-repeat;
+    background: -moz-image-set(url("/images/settings_active.png") 1x,
+                  url("/images/settings_active@2x.png") 2x) 50% 0% no-repeat;
+    background: -o-image-set(url("/images/settings_active.png") 1x,
+                  url("/images/settings_active@2x.png") 2x) 50% 0% no-repeat;
+    background: -ms-image-set(url("/images/settings_active.png") 1x,
+                  url("/images/settings_active@2x.png") 2x) 50% 0% no-repeat;
+}
+
+.active[ui-sref="dashboard"]:before {
+    background: url("/images/dashboard_active.png");
+    background: image-set(url("/images/dashboard_active.png") 1x,
+                  url("/images/dashboard_active@2x.png") 2x) 50% 0% no-repeat;
+    background: -webkit-image-set(url("/images/dashboard_active.png") 1x,
+                  url("/images/dashboard_active@2x.png") 2x) 50% 0% no-repeat;
+    background: -moz-image-set(url("/images/dashboard_active.png") 1x,
+                  url("/images/dashboard_active@2x.png") 2x) 50% 0% no-repeat;
+    background: -o-image-set(url("/images/dashboard_active.png") 1x,
+                  url("/images/dashboard_active@2x.png") 2x) 50% 0% no-repeat;
+    background: -ms-image-set(url("/images/dashboard_active.png") 1x,
+                  url("/images/dashboard_active@2x.png") 2x) 50% 0% no-repeat;
+}
+
+
+.active[ui-sref="store"]:before {
+    background: url("/images/store_active.png");
+    background: image-set(url("/images/store_active.png") 1x,
+                  url("/images/store_active@2x.png") 2x) 50% 0% no-repeat;
+    background: -webkit-image-set(url("/images/store_active.png") 1x,
+                  url("/images/store_active@2x.png") 2x) 50% 0% no-repeat;
+    background: -moz-image-set(url("/images/store_active.png") 1x,
+                  url("/images/store_active@2x.png") 2x) 50% 0% no-repeat;
+    background: -o-image-set(url("/images/store_active.png") 1x,
+                  url("/images/store_active@2x.png") 2x) 50% 0% no-repeat;
+    background: -ms-image-set(url("/images/store_active.png") 1x,
+                  url("/images/store_active@2x.png") 2x) 50% 0% no-repeat;
 }
