@@ -79,23 +79,30 @@ app.controller('manageController', function ($scope, $state, $http, $cookieStore
   }
 });
 
+
+//用户 搜索首页
 app.controller('searchController', function($scope, $rootScope, $state, $http, locationService, assetService) {
+
+  // btn 文案
   $scope.searchBtnText = '搜索';
-      // assetService.search($scope.keyword)
-      //   .then(
-      //     function(data) {
-      //       $scope.injectDistance(data);
-      //     },
-      //     function() {
-      //       $scope.assets = [];
-      //     }
-      //   );
+
+  // 搜索事件
   $scope.search = function() {
 
-    if (true) {
-      $scope.notFound = true;
-      $scope.searchBtnText = '添加需求';
-    }
+    // 搜索商品
+    assetService.search('xxxxx')
+      .then(
+        function(data) {
+
+          // 未找到的情况
+          if (data.length === 0) {
+            $scope.notFound = true;
+
+            // 修改文案
+            $scope.searchBtnText = '添加需求';
+          }
+        }
+      );
   };
 });
 
