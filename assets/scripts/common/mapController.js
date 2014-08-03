@@ -2,7 +2,10 @@
 
 var app = angular.module('app');
 
-app.controller('user_map_assets', function(locationService,mapService2,assetService) {
+app.controller('user_map_assets', function($scope, $state, locationService,mapService2,assetService) {
+  $scope.goBack = function() {
+    $state.go('assets');
+  };
   locationService.getLocation().then(function(cur_point) {
     assetService.list().then(function(_dataList){
       console.log(_dataList);
@@ -14,7 +17,10 @@ app.controller('user_map_assets', function(locationService,mapService2,assetServ
   });
 });
 
-app.controller('user_map_trader', function(locationService,mapService2,$http) {
+app.controller('user_map_trader', function($scope, $state, locationService,mapService2,$http) {
+  $scope.goBack = function() {
+    $state.go('discovery');
+  };
 
   locationService.getLocation().then(function(cur_point) {
     $http.get('/user?type=trader').success(function(_dataList){
@@ -28,7 +34,10 @@ app.controller('user_map_trader', function(locationService,mapService2,$http) {
 
 });
 
-app.controller('trader_map_use', function(locationService, mapService2, $http) {
+app.controller('trader_map_use', function($scope, $state, locationService, mapService2, $http) {
+  $scope.goBack = function() {
+    $state.go('');
+  };
 
   locationService.getLocation().then(function(cur_point) {
     $http.get('/user').success(function(_dataList){
@@ -42,7 +51,10 @@ app.controller('trader_map_use', function(locationService, mapService2, $http) {
 
 });
 
-app.controller('trader_map_order', function(locationService,mapService2,$http) {
+app.controller('trader_map_order', function($scope, $state, locationService,mapService2,$http) {
+  $scope.goBack = function() {
+    $state.go('dashboard');
+  };
 
   locationService.getLocation().then(function(cur_point) {
     $http.get('/order').success(function(_dataList){
