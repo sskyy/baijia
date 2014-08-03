@@ -41,11 +41,25 @@ app.config(function($stateProvider, $urlRouterProvider) {
       templateUrl: 'partials/trader/order.html',
       controller: 'orderController'
     })
+
     .state('map', {
       url: '/map',
       templateUrl: 'partials/trader/map.html',
       controller: 'mapController'
     })
+
+    // 用户地图路由
+    .state('trader_map_use', {
+      url: '/trader_map_use',
+      templateUrl: 'partials/trader/map.html',
+      controller: 'trader_map_use'
+    })
+    .state('trader_map_order', {
+      url: '/trader_map_order',
+      templateUrl: 'partials/trader/map.html',
+      controller: 'trader_map_order'
+    })
+
     .state('store', {
       url: '/store',
       templateUrl: 'partials/trader/store.html',

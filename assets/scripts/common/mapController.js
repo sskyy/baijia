@@ -2,11 +2,57 @@
 
 var app = angular.module('app');
 
-app.controller('user_map_assets', function() {
-  alert(1);
+app.controller('user_map_assets', function(locationService,mapService2,assetService) {
+  locationService.getLocation().then(function(cur_point) {
+    assetService.list().then(function(_dataList){
+      console.log(_dataList);
+      mapService2.renderMap({
+        user_point: cur_point,
+        dataList: _dataList
+      });
+    });
+  });
 });
 
-app.controller('user_map_trader', function() {
+app.controller('user_map_trader', function(locationService,mapService2,$http) {
+
+  locationService.getLocation().then(function(cur_point) {
+    $http.get('/user?type=trader').success(function(_dataList){
+        console.log(_dataList);
+        mapService2.renderMap({
+          user_point: cur_point,
+          dataList: _dataList
+        });
+    });
+  });
+
+});
+
+app.controller('trader_map_use', function(locationService, mapService2, $http) {
+
+  locationService.getLocation().then(function(cur_point) {
+    $http.get('/user').success(function(_dataList){
+        console.log(_dataList);
+        mapService2.renderMap({
+          user_point: cur_point,
+          dataList: _dataList
+        });
+    });
+  });
+
+});
+
+app.controller('trader_map_order', function(locationService,mapService2,$http) {
+
+  locationService.getLocation().then(function(cur_point) {
+    $http.get('/user?type=trader').success(function(_dataList){
+        console.log(_dataList);
+        mapService2.renderMap({
+          user_point: cur_point,
+          dataList: _dataList
+        });
+    });
+  });
 
 });
 

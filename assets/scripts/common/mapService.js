@@ -148,13 +148,14 @@ app.factory('mapDataService', function($q, $http) {
 });
 
 app.factory('mapService2', function() {
+
   //创建地图标点点击后Tip提示信息窗口
-  function createPointTip(item){
+  function createPointTip(item, marker) {
     var html = [
       '<div id="J_markerTip"">'+
           '<div class="tipbox">'+
               '<h4>'+item.name+'</h4>'+
-              '<p>'+item.desc+'<span class="price">'+item.price+'</span></p>'+
+              '<p>'+item.owner.name +'<span class="price">'+item.price+'</span></p>'+
               '<p><a href="###">查看详情</a></p>'+
           '</div>'+
       '</div>'
@@ -165,16 +166,24 @@ app.factory('mapService2', function() {
   //创建坐标在地图上
   function createPointsOnMap(map, dataList){
     for(var i=0;i<dataList.length;i++){
-      var point = dataList[i];
-      var marker = new BMap.Marker(new BMap.Marker(point.lng, point.lat)); //实例化一个标注
+      var point;
+      if(dataList[i].owner){
+        point = dataList[i].owner.points;
+      }else{
+        dataList[i].owner= {name:''};
+        dataList[i].price = '';
+        point = dataList[i].points
+      }
+      var marker = new BMap.Marker(new BMap.Point(point.lng, point.lat)); //实例化一个标注
       map.addOverlay(marker);// 将标注添加到地图
-      createPointTip(dataList[i]); // 创建提示信息
+      createPointTip(dataList[i],marker); // 创建提示信息
     }
   }
   //创建地图
   function createMap(options) {
     var map = new BMap.Map("J_mymap");
-    var me_point = new BMap.Point(options.lng, options.lat); //当前用户坐标点
+    var user_point = options.user_point;
+    var me_point = new BMap.Point(user_point.lng, user_point.lat); //当前用户坐标点
     map.centerAndZoom(me_point, 11); //以当前用户坐标位置为中心显示地图区域
     map.addControl(new BMap.ZoomControl()); //添加地图缩放控件
     return map;
@@ -182,7 +191,6 @@ app.factory('mapService2', function() {
 
   /* options 参数说明：
     options = {
-      mapType: 'user', // user|trader
       user_point: {},
       dataList: [
         {
