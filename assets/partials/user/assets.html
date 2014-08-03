@@ -59,7 +59,10 @@
               <span>商店：{{ a.owner.name }}</span>
               <span>价格： {{a.price}}</span>
               <span>{{a.distance}}公里</span>
-              <span><a ng-click="order">下单</a></span>
+              <span>
+                  <a ng-show="!a.orderred" ng-click="order()">下单</a>
+                  <span ng-show="a.orderred">下单成功</span>
+              </span>
             </div>
           </a>
         </div>

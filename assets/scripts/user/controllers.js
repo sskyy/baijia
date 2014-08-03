@@ -97,6 +97,8 @@ app.controller('addReqController', function($scope) {
 
 app.controller('assetsController',function($scope){
     //$rootScope.searchResults
+    //$rootScope.searchKeyword
+
     locationService.getLocation().then(function(res){
         var uLat = res.lat;
         var uLng = res.lng;
@@ -110,6 +112,18 @@ app.controller('assetsController',function($scope){
         console.log("asset 添加了位置 =>", data);
         $scope.assets = $scope.searchResults;
     });
+
+    $scope.order = function( asset ){
+        $http({
+            url : '/order',
+            method : 'post',
+            data : {tid : asset.owner.id, name: asset.name}
+        }).success(function(){
+            asset.orderred = true
+        })
+    }
+
+    $
 })
 
 app.controller('mapController', function($scope, $q, mapService2, dataService, locationService) {
