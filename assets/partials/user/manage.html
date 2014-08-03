@@ -1,0 +1,16 @@
+<form action="/user/setName" method="post" >
+  <input type="text" name="username" placeholder="用户名" required>
+  <input type="submit" value="修改用户名">
+</form>
+
+<form target="uploadData" enctype="multipart/form-data"
+  method="post" action="http://v0.api.upyun.com/baidu-baijia">
+
+  <input type="hidden" name="policy" value="{{ policy }}">
+  <input type="hidden" name="signature" value="{{ signature }}">
+  <input type="file" name="file" value="用户头像">
+  <input type="submit" value="修改头像">
+
+</form>
+
+<iframe id="uploadData" name="uploadData" ng-show="false"></iframe>

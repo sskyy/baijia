@@ -32,6 +32,32 @@ app.controller('authController', function($scope, $state, $resource) {
   };
 });
 
+app.controller('manageController', function ($scope, $state, md5) {
+  var options = {
+    'bucket': 'baidu-baijia',
+    'expiration': new Date().getTime() + 60,
+    'save-key': '/' + getRandomName() + '.jpg'
+  };
+
+  var policy = window.btoa(JSON.stringify(options));
+  var signature = md5.createHash(policy + '&' + 'LXryECyP3BodcZLRQ555IfalbZg=');
+
+  $scope.policy = policy;
+  $scope.signature = signature;
+
+  function getRandomName() {
+    var chars = 'ABCDEFGHJKMNPQRSTWXYZabcdefhijkmnprstwxyz2345678';
+    var maxPos = chars.length;
+    var name = '';
+
+    for (var i = 0; i < 32; i++) {
+      name += chars.charAt(Math.floor(Math.random() * maxPos));
+    }
+
+    return name;
+  }
+});
+
 app.controller('searchController', function($scope, $rootScope, $state, $http, locationService, assetService) {
   $scope.searchBtnText = '搜索';
 
@@ -110,11 +136,20 @@ app.controller('addReqController', function($scope) {
   console.log('addReqController');
 });
 
-app.controller('mapController', function($scope,mapService, locationService) {
-  locationService.getLocation().then(function(res){
-    mapService.initMap(new BMap.Point(res.lng, res.lat));
-    console.log('map start');
-  });
+app.controller('mapController', function($scope, $q, mapService2, dataService, locationService) {
+  var deferred = $q.defer();
+  // deferred.resolve()
+  // .then(function(res){
+  //   mapService.initMap(new BMap.Point(res.lng, res.lat));
+  //   console.log('map start');
+  // });
+  deferred.when(locationService.getLocation(), dataService.getMapData())
+  .then(function(cur_point, dataList){
+    mapService2.renderMap({
+      user_point: cur_point,
+      dataList: dataList
+    })
+  })
 });
 
 app.controller('buyController', function($scope) {
