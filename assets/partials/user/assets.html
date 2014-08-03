@@ -41,7 +41,7 @@
       <div class="scrollable-content">
         <!-- 搜索列表 -->
         <div class="list-group asset-list">
-          <a ng-repeat="asset in assets" href="#" class="list-group-item">
+          <a ng-repeat="asset in searchResults" href="#" class="list-group-item">
             <span class="asset-logo"></span>
             <div style="margin-top: 22px;margin-left: 110px;">
               <span>商品名：{{ asset.name }}</span><br>
@@ -50,21 +50,6 @@
           </a>
         </div>
 
-        <!-- 推荐列表 -->
-        <div class="list-group asset-list" ng-hide="keyword">
-          <a ng-repeat="a in assets" href="#" class="list-group-item">
-            <span class="asset-logo"><img ng-src="s.owner.avatar"></span>
-            <div style="margin-top: 22px;margin-left: 110px;">
-              <span>商店：{{ a.owner.name }}</span>
-              <span>价格： {{a.price}}</span>
-              <span>{{a.distance}}公里</span>
-              <span>
-                  <a ng-show="!a.orderred" ng-click="order()">下单</a>
-                  <span ng-show="a.orderred">下单成功</span>
-              </span>
-            </div>
-          </a>
-        </div>
       </div>
     </div>
   </div>
