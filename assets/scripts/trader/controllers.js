@@ -47,8 +47,32 @@ app.controller('dashboardController', function($scope, $state, orderService) {
 
 });
 
-app.controller('orderController', function($scope) {
-  console.log('orderController');
+app.controller('orderController', function($scope,$rootScope) {
+
+    $http('/order').success(function(data){
+        $scope.orders = data
+        $rootScope.orders = data
+    })
+
+});
+
+app.controller('orderController', function($scope,$rootScope) {
+
+    $http('/order').success(function(data){
+        $scope.orders = data
+        $rootScope.orders = data
+    })
+
+});
+
+
+app.controller('discoverController', function($scope,$rootScope) {
+
+    $http('/requires').success(function(data){
+        $scope.requires = data
+        $rootScope.requires = data
+    })
+
 });
 
 app.controller('mapController', function($scope) {

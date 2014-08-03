@@ -37,6 +37,7 @@
                     <a ng-repeat="r in requires" href="#" class="list-group-item">
                         <span class="asset-logo"><img ng-src="r.avatar"></span>
                         <div style="margin-top: 22px;margin-left: 110px;">
+                            <span>用户名：{{ r.user.name }}</span><br>
                             <span>商品名：{{ r.name }}</span><br>
                         </div>
                     </a>
