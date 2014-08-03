@@ -108,8 +108,24 @@ app.controller('searchController', function($scope, $rootScope, $state, $http, l
 
 app.controller('discoveryController', function($scope, $rootScope, $state, $http, locationService, assetService) {
 
+    var currentLocation
 
+    locationService.getLocation().then(function(res){
+        currentLocation = res
+        var uLat = res.lat;
+        var uLng = res.lng;
 
+        $http('/user?type=trader').success(function( traders){
+            traders.forEach(function(i){
+                var sLat = i.points.lat;
+                var sLng = i.points.lng;
+                var distance = locationService.getDistance(uLat, uLng, sLat, sLng);
+                i.distance = distance;
+            });
+            console.log("asset 添加了位置 =>", data);
+            $scope.traders = data;
+        })
+    });
 });
 
 app.controller('requirementsController', function($scope,$http) {

@@ -40,24 +40,13 @@
 
     <div class="scrollable">
       <div class="scrollable-content">
-        <!-- 搜索列表 -->
+        <!-- 商户列表 -->
         <div class="list-group asset-list">
-          <a ng-repeat="asset in assets" href="#" class="list-group-item">
+          <a ng-repeat="t in traders" href="#" class="list-group-item">
             <span class="asset-logo"></span>
             <div style="margin-top: 22px;margin-left: 110px;">
-              <span>商品名：{{ asset.name }}</span><br>
-              <span>价钱： {{asset.price}}</span>
-            </div>
-          </a>
-        </div>
-
-        <!-- 推荐列表 -->
-        <div class="list-group asset-list" ng-hide="keyword">
-          <a ng-repeat="s in suggests" href="#" class="list-group-item">
-            <span class="asset-logo"></span>
-            <div style="margin-top: 22px;margin-left: 110px;">
-              <span>商品名：{{ s.name }}</span><br>
-              <span>价钱： {{s.price}}</span>
+              <span>商户名：{{ t.name }}</span><br>
+              <span>{{t.distance}}</span>
             </div>
           </a>
         </div>
