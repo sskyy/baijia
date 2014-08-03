@@ -30,7 +30,7 @@
       <div class="scrollable-content">
         <div class="list-group order-list">
             <a ng-repeat="o in orders" href="#" class="list-group-item">
-                <span class="asset-logo"><img src="{{o.user.avatar}}"></span>
+                <span class="asset-logo"><img ng-src="{{o.user.avatar}}"></span>
                 <div style="margin-top: 22px;margin-left: 110px;">
                     <span>用户名：{{ o.user.name }}</span><br>
                     <span>需要：{{o.name}}</span>
