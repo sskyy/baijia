@@ -112,18 +112,22 @@ app.controller('discoveryController', function($scope, $rootScope, $state, $http
 
 });
 
-app.controller('requirementsController', function($scope) {
+app.controller('requirementsController', function($scope,$http) {
 
-    $scope.requires = [{
-        name : '冰红茶',
-        providers : [{
-            name : "新新超市",
-            price : 25
-        }]
-    },{
-        name : '冰绿茶',
-        providers : []
-    }]
+//    $scope.requires = [{
+//        name : '冰红茶',
+//        providers : [{
+//            name : "新新超市",
+//            price : 25
+//        }]
+//    },{
+//        name : '冰绿茶',
+//        providers : []
+//    }]
+
+    $http('/require').success(function(data){
+        $scope.requires = data
+    })
 
 });
 
@@ -135,7 +139,10 @@ app.controller('assetsController',function($scope){
     //$rootScope.searchResults
     //$rootScope.searchKeyword
 
+    var currentLocation
+
     locationService.getLocation().then(function(res){
+        currentLocation = res
         var uLat = res.lat;
         var uLng = res.lng;
 
@@ -153,7 +160,7 @@ app.controller('assetsController',function($scope){
         $http({
             url : '/order',
             method : 'post',
-            data : {tid : asset.owner.id, name: asset.name, user : $rootScope.user}
+            data : {tid : asset.owner.id, name: asset.name, user : $rootScope.user,point:currentLocation}
         }).success(function(){
             asset.orderred = true
         })
