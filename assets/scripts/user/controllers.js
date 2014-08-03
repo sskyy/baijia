@@ -128,11 +128,20 @@ app.controller('addReqController', function($scope) {
   console.log('addReqController');
 });
 
-app.controller('mapController', function($scope,mapService, locationService) {
-  locationService.getLocation().then(function(res){
-    mapService.initMap(new BMap.Point(res.lng, res.lat));
-    console.log('map start');
-  });
+app.controller('mapController', function($scope, $q, mapService2, dataService, locationService) {
+  var deferred = $q.defer();
+  // deferred.resolve()
+  // .then(function(res){
+  //   mapService.initMap(new BMap.Point(res.lng, res.lat));
+  //   console.log('map start');
+  // });
+  deferred.when(locationService.getLocation(), dataService.getMapData())
+  .then(function(cur_point, dataList){
+    mapService2.renderMap({
+      user_point: cur_point,
+      dataList: dataList
+    })
+  })
 });
 
 app.controller('buyController', function($scope) {
