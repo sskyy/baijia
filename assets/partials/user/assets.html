@@ -42,7 +42,7 @@
         <!-- 搜索列表 -->
         <div class="list-group asset-list">
           <a ng-repeat="asset in searchResults" href="#" class="list-group-item">
-            <span class="asset-logo"></span>
+            <span class="asset-logo"><img src="{{asset.avatar}}"></span>
             <div style="margin-top: 22px;margin-left: 110px;">
               <span>商品名：{{ asset.name }}</span><br>
               <span>价钱： {{asset.price}}</span>

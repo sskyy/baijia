@@ -5,7 +5,13 @@
 var _  = require('lodash')
 
 var traderNames = ['新新超市','小白量贩','全聚龙','京客隆','易初莲花','联华','华联超市','飞来客'],
-    assetsNames = ['娃哈哈矿泉水','鲜橙多','杜蕾斯','香蕉片','鲜奶片','星巴克咖啡外卖版'],
+    assetsNames = [
+        {name:'娃哈哈矿泉水',avatar:'/images/kuangquanshui.jpg'},
+        {name:'鲜橙多',avatar:'/images/xianchengduo.jpg'},
+        {name:'杜蕾斯',avatar:'/images/duleisi.jpg'},
+        {name:'香蕉片',avatar:'/images/xiangjiaopian.jpg'},{name:'鲜奶片',avatar:'/images/xiannaipian.jpg'},
+        {name:'星巴克咖啡外卖版',avatar:'/images/xingbaike.jpg'}
+        ],
     phone = 18000000000,
     lng = 121.5809783,
     lat = 31.2019986
@@ -26,9 +32,10 @@ _.each( traderNames,function( traderName,i ){
         }
     }
 
-    _.each( assetsNames, function( assetName ){
+    _.each( assetsNames, function( asset ){
         trader.assets.push({
-            name : assetName,
+            name : asset.name,
+            avatar: asset.avatar,
             store : parseInt( 50 * Math.random() ),
             price : parseInt( 10 * Math.random() )
         })
