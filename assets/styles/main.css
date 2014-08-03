@@ -193,7 +193,14 @@ to prevent collapsing during animation*/
 }
 
 .login-su-1x {
+    background: url("/images/su.png");
     background: -webkit-image-set(url("/images/su.png") 1x,
+                  url("/images/su@2x.png") 2x) 50% 0% no-repeat;
+    background: -moz-image-set(url("/images/su.png") 1x,
+                  url("/images/su@2x.png") 2x) 50% 0% no-repeat;
+    background: -o-image-set(url("/images/su.png") 1x,
+                  url("/images/su@2x.png") 2x) 50% 0% no-repeat;
+    background: -ms-image-set(url("/images/su.png") 1x,
                   url("/images/su@2x.png") 2x) 50% 0% no-repeat;
     width: 191px;
     height: 190px;
@@ -201,7 +208,14 @@ to prevent collapsing during animation*/
 }
 
 .login-logo-1x {
+    background: url("/images/logo.png");
     background: -webkit-image-set(url("/images/logo.png") 1x,
+                  url("/images/logo@2x.png") 2x) 50% 0% no-repeat;
+    background: -moz-image-set(url("/images/logo.png") 1x,
+                  url("/images/logo@2x.png") 2x) 50% 0% no-repeat;
+    background: -o-image-set(url("/images/logo.png") 1x,
+                  url("/images/logo@2x.png") 2x) 50% 0% no-repeat;
+    background: -ms-image-set(url("/images/logo.png") 1x,
                   url("/images/logo@2x.png") 2x) 50% 0% no-repeat;
     width: 77px;
     height: 59px;
@@ -227,7 +241,16 @@ to prevent collapsing during animation*/
     width: 77px;
     height: 59px;
     margin: 26% auto;
+    background: url("/images/logo.png");
+    background: image-set(url("/images/logo.png") 1x,
+                  url("/images/logo@2x.png") 2x) 50% 0% no-repeat;
     background: -webkit-image-set(url("/images/logo.png") 1x,
+                  url("/images/logo@2x.png") 2x) 50% 0% no-repeat;
+    background: -moz-image-set(url("/images/logo.png") 1x,
+                  url("/images/logo@2x.png") 2x) 50% 0% no-repeat;
+    background: -o-image-set(url("/images/logo.png") 1x,
+                  url("/images/logo@2x.png") 2x) 50% 0% no-repeat;
+    background: -ms-image-set(url("/images/logo.png") 1x,
                   url("/images/logo@2x.png") 2x) 50% 0% no-repeat;
 }
 
