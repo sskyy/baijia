@@ -3,7 +3,7 @@
 var app = angular.module('app');
 
 // 登陆逻辑
-app.controller('authController', function($scope, $state, $resource) {
+app.controller('authController', function($scope, $state, $resource, $rootScope) {
   var actionTextMap = {
     login: '登录',
     register: '注册'
@@ -18,11 +18,16 @@ app.controller('authController', function($scope, $state, $resource) {
     var credentials = {
       userId: this.userId,
       password: this.password,
-      username: this.userId
+      name: this.userId
     };
 
     var auth = Authorization.save(credentials, function() {
-      auth && auth.status === 'success' ? $state.go('search') : onError(auth);
+      if (auth && auth.status === 'success') {
+        $rootScope.user = auth.user;
+        $state.go('search');
+      } else {
+        onError(auth);
+      }
     }, onError);
 
     function onError (error) {
@@ -32,7 +37,7 @@ app.controller('authController', function($scope, $state, $resource) {
   };
 });
 
-app.controller('manageController', function ($scope, $state, md5) {
+app.controller('manageController', function ($scope, $state, $http, $cookieStore, md5) {
   var options = {
     'bucket': 'baidu-baijia',
     'expiration': new Date().getTime() + 60,
@@ -44,6 +49,22 @@ app.controller('manageController', function ($scope, $state, md5) {
 
   $scope.policy = policy;
   $scope.signature = signature;
+  $scope.upload = function () {
+    $http.put('/user', {
+      id: $cookieStore.get('userid') || 0,
+      avatar: 'http://baidu-baijia.b0.upaiyun.com/avatar.jpg'
+    }).success(showResult).error(showResult);
+  };
+  $scope.setName = function () {
+    $http.put('/user', {
+      id: $cookieStore.get('userid') || 0,
+      name: this.username
+    }).success(showResult).error(showResult);
+  };
+
+  function showResult (data) {
+    console.log(data);
+  }
 
   function getRandomName() {
     var chars = 'ABCDEFGHJKMNPQRSTWXYZabcdefhijkmnprstwxyz2345678';

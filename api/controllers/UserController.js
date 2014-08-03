@@ -27,7 +27,7 @@ module.exports = {
   _config: {},
   login: function(req, res) {
     if (req.session.user && req.session.user.id) {
-      return res.send(200, req.session.user);
+      return res.send(200, _.extend(user, { status: 'success' }));
     }
 
     var userId = req.param('userId');
@@ -44,7 +44,7 @@ module.exports = {
         field: {
           userId: 1,
           password: 1,
-          username: 1
+          name: 1
         }
       };
 
@@ -58,10 +58,12 @@ module.exports = {
         }
 
         req.session.user = user;
+        res.cookie('userid', user.id);
+
         user.lastLogin = new Date();
 
         User.update({
-          userId: user.userId
+          userId: user.id
         }, {
           lastLogin: new Date()
         }).then(function() {
@@ -73,7 +75,7 @@ module.exports = {
   },
   register: function(req, res) {
     var userParam = {};
-    var validated = ParamService.pick(['userId', 'username'], userParam, req);
+    var validated = ParamService.pick(['userId', 'name'], userParam, req);
 
     if (!validated) {
       return res.send(406, {
@@ -85,7 +87,7 @@ module.exports = {
       or: [{
         userId: userParam.userId
       }, {
-        username: userParam.username
+        name: userParam.name
       }]
     }).then(function(users) {
       if (users.length == 0) {
@@ -95,90 +97,9 @@ module.exports = {
         });
       } else {
         throw [409, {
-          msg: 'userId or username already exist'
+          msg: 'userId or name already exist'
         }];
       }
     }).fail(_.partialRight(ErrorRespondService.handle, res));
-  },
-
-    upload : function( req, res){
-        var dir = __dirname + "/../../assets/upload/",
-            defers  =[],
-            result = []
-
-        req.file('file').upload( StreamReceiverService({dirname:dir}),function (err, files) {//可配置
-
-            if( err ){
-                res.json(500,{msg:'upload failed'})
-            }
-
-            files.forEach(function( file,i ){
-                var defer = Q.defer()
-                defers.push(defer.promise)
-                result[i] = {name:file.filename,size:file.size}
-                Attachment.create({
-                    uid: req.session.user ? req.session.user.id : 0,
-                    name: file.filename,
-                    type: file.type,
-                    addr: dir,
-                    size: file.size,
-                    caption: ''
-                }).then(function(attach) {
-                    fs.rename(dir+file.filename, dir+attach.id+'.' + getExtention(file.filename), function(err){
-                        if( err ){
-                            console.log("rename failed",err)
-                            result[i].state = 'failed'
-                            return defer.reject(result[i])
-                        }
-                        result[i].addr = attach.addr
-                        result[i].state='succeed'
-                        result[i].id = attach.id
-                        return defer.resolve(result[i])
-                    })
-                }).catch(function (err) {
-                    console.log("ERR: add image record failed", err)
-                    result[i].state = 'failed'
-                    defer.reject(result[i])
-                })
-            })
-
-
-            Q.allSettled(defers).then(function(){
-                var attach = result.pop()
-                User.find( req.session.user.id).then(function(user){
-                    user.avatar = attach.addr + attach.id
-                    user.save(function( err ){
-                        if( err ){
-                            console.log("save avatar failed")
-                            return res.send(500)
-                        }
-                        
-                        return res.json(200,result)
-                    })
-                })
-
-
-            }).catch(function(){
-                return res.json(500,{msg:'Server Error'})
-            })
-        })
-    },
-
-    setName : function( req, res){
-
-        if( !req.session.user || !req.param('username')){
-            return res.send(406)
-        }
-
-        User.find( req.session.user.id).then(function(user){
-            user.name = req.param('username')
-            user.save(function(err){
-                if( err){
-                    console.log("set name failed")
-                    return res.send(500)
-                }
-                return res.send(200)
-            })
-        })
-    }
+  }
 };

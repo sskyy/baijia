@@ -1,5 +1,5 @@
-<form action="/user/setName" method="post" >
-  <input type="text" name="username" placeholder="用户名" required>
+<form ng-submit="setName()">
+  <input type="text" name="username" placeholder="用户名" ng-model="username" required>
   <input type="submit" value="修改用户名">
 </form>
 
@@ -9,7 +9,7 @@
   <input type="hidden" name="policy" value="{{ policy }}">
   <input type="hidden" name="signature" value="{{ signature }}">
   <input type="file" name="file" value="用户头像">
-  <input type="submit" value="修改头像">
+  <input type="submit" value="修改头像" ng-click="upload()">
 
 </form>
 
