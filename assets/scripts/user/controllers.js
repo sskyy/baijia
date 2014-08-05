@@ -45,7 +45,7 @@ app.controller('manageController', function ($scope, $state, $http, $cookieStore
   };
 
   var policy = window.btoa(JSON.stringify(options));
-  var signature = md5.createHash(policy + '&' + 'LXryECyP3BodcZLRQ555IfalbZg=');
+  var signature = md5.createHash(policy + '&' + '这里输入私人的运空间的key');
 
   $scope.policy = policy;
   $scope.signature = signature;
@@ -67,7 +67,7 @@ app.controller('manageController', function ($scope, $state, $http, $cookieStore
   }
 
   function getRandomName() {
-    var chars = 'ABCDEFGHJKMNPQRSTWXYZabcdefhijkmnprstwxyz2345678';
+    var chars = '＃';
     var maxPos = chars.length;
     var name = '';
 
